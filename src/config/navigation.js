@@ -6,7 +6,7 @@ export const socialLinks = [
   {
     href: 'https://x.com/rehikir',
     text: 'x.com/rehikir',
-    iconSrc: '/images/x_logo.svg',
+    iconSrc: './images/x_logo.svg',
     iconAlt: 'X logo',
     target: '_blank',
     rel: 'noopener'
@@ -14,7 +14,7 @@ export const socialLinks = [
   {
     href: 'https://boosty.to/rehikir',
     text: 'boosty.to/rehikir',
-    iconSrc: '/images/boosty_logo.svg',
+    iconSrc: './images/boosty_logo.svg',
     iconAlt: 'Boosty logo',
     target: '_blank',
     rel: 'noopener'
@@ -22,7 +22,7 @@ export const socialLinks = [
   {
     href: '#',
     text: 'snootbooru.com/...',
-    iconSrc: '/images/snootbooru_logo.svg',
+    iconSrc: './images/snootbooru_logo.svg',
     iconAlt: 'Snootbooru logo',
     target: '_blank',
     rel: 'noopener'

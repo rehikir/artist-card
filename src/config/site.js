@@ -11,9 +11,9 @@ export const siteConfig = {
   },
 
   images: {
-    logo: '/images/logo.svg',
-    kir: '/images/kir.svg',
-    dashes: '/images/dashes.svg'
+    logo: './images/logo.svg',
+    kir: './images/kir.svg',
+    dashes: './images/dashes.svg'
   }
 }
 

@@ -4,7 +4,6 @@ import { Header } from './Header/Header.js'
 import { Body } from './Body/Body.js'
 import { Footer } from './Footer/Footer.js'
 import { slotConfig } from '../config/slots.js'
-import { initAnimations } from '../utils/animations.js'
 
 export function createApp({ page = 'home', isInner = false } = {}) {
   return `
@@ -24,7 +23,7 @@ export function createApp({ page = 'home', isInner = false } = {}) {
   `
 }
 
-// Initialize app with animations
+// Initialize app (animations disabled for UX redesign)
 export function initApp() {
-  initAnimations()
+  // Intentionally empty
 }

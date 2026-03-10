@@ -1,8 +1,8 @@
 import './styles/main.scss'
-import { createApp, initApp } from './components/App.js'
+import { createApp } from './components/App.js'
 import { getPageTitle } from './config/site.js'
 import { getBodyClass } from './constants/classNames.js'
-import { initRouter, getCurrentRoute, isInnerPage, getPageData } from './utils/router.js'
+import { initRouter, isInnerPage, getPageData } from './utils/router.js'
 
 // Initialize the application as SPA
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,9 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Re-render app content
       app.innerHTML = createApp({ page, isInner })
-
-      // Re-initialize animations for new content
-      initApp()
     })
   }
 })

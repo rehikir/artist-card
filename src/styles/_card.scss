@@ -14,24 +14,27 @@
   padding-bottom: $sp-lg;
   gap: $sp-lg;
 
+  // Smooth height transition for page changes
+  transition: height $anim-fast;
+
   &--home {
     height: 640px;
   }
 
   &--inner-page {
     border-radius: 0;
-    min-height: 100%;
+    min-height: 100vh;
   }
 }
 
 .card-body {
-    &--home {
-      // nothing special yet
-    }
-    &--inner-page {
-      // body variation for inner pages
-    }
+  &--home {
+    // nothing special yet
   }
+  &--inner-page {
+    // body variation for inner pages
+  }
+}
 
 .header-wrapper {
   flex-shrink: 0;

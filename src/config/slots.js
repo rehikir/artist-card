@@ -1,2 +1,5 @@
-// Re-export from defaults.js for backward compatibility
-export { slotDefaults as slotConfig } from '../constants/defaults.js'
+// Slot configuration - edit these values to update commission status
+export const slotConfig = {
+  maxSlots: 5,
+  takenSlots: 3
+}
