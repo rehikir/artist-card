@@ -13,10 +13,11 @@ export function createApp({ page = 'home', isInner = false } = {}) {
         title: getPageSuffix(page),
         logoSrc: siteConfig.images.logo,
         kirSrc: siteConfig.images.kir,
-        inner: isInner
+        inner: isInner,
+        currentPage: page
       })}
 
-      ${Body({ inner: isInner })}
+      ${Body({ inner: isInner, page })}
 
       ${Footer({ ...slotConfig, inner: isInner })}
     </div>

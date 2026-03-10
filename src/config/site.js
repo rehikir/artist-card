@@ -6,7 +6,8 @@ export const siteConfig = {
   pages: {
     home: { path: 'index.html', titleSuffix: 'Commissions' },
     rules: { path: 'rules.html', titleSuffix: 'Rules & Terms' },
-    prices: { path: 'prices.html', titleSuffix: 'Prices' }
+    prices: { path: 'prices.html', titleSuffix: 'Prices' },
+    faq: { path: 'faq.html', titleSuffix: 'FAQ' }
   },
 
   images: {

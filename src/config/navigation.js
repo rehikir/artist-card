@@ -31,26 +31,36 @@ export const socialLinks = [
 
 // Navigation links
 export const navLinks = [
-  { text: 'FAQ', href: null, disabled: true },
+  { text: 'FAQ', href: null, disabled: false, route: 'faq' },
   {
     text: 'Rules & Terms',
-    href: siteConfig.pages.rules.path,
-    disabled: false
+    href: null,
+    disabled: false,
+    route: 'rules'
   },
   {
     text: 'Prices',
-    href: siteConfig.pages.prices.path,
-    disabled: false
+    href: null,
+    disabled: false,
+    route: 'prices'
   },
   { text: 'Contact me', href: null, disabled: true }
 ]
 
 // Helper to get nav links with current page state
 export const getNavLinks = (currentPage = 'home') => {
-  return navLinks.map(link => ({
-    ...link,
-    disabled: link.href === null ||
-              (link.href === siteConfig.pages.prices.path && currentPage === 'prices') ||
-              (link.href === siteConfig.pages.rules.path && currentPage === 'rules')
-  }))
+  return navLinks.map(link => {
+    if (link.route) {
+      // SPA navigation - use hash routing
+      return {
+        ...link,
+        href: `#/${siteConfig.pages[link.route].path}`,
+        disabled: currentPage === link.route
+      }
+    }
+    return {
+      ...link,
+      disabled: link.disabled
+    }
+  })
 }

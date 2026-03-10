@@ -15,14 +15,72 @@ figure, blockquote, dl, dd {
 
 /* Set core body defaults */
 body {
-    background-color: $color-primary;
-    min-height: 100dvh;
+  background-color: $color-primary;
+  min-height: 100dvh;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .body--inner-page {
-    align-items: normal;
+  align-items: normal;
+}
+
+/* FAQ Styles */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-lg;
+}
+
+.faq-item {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-xs;
+  padding-bottom: $sp-md;
+  border-bottom: 1px solid rgba($color-primary, 0.1);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.faq-question {
+  font-size: $fs-h3;
+  font-weight: $fw-base;
+}
+
+.faq-answer {
+  font-size: $fs-p1;
+  line-height: $lh-normal;
+}
+
+/* Rules Styles */
+.rules-section-title {
+  font-size: $fs-h3;
+  font-weight: $fw-base;
+  padding-bottom: $sp-sm;
+  margin-bottom: $sp-sm;
+  border-bottom: 1px solid rgba($color-primary, 0.1);
+}
+
+.rules-list {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-sm;
+  padding-left: $sp-md;
+}
+
+.rule-item {
+  font-size: $fs-p1;
+  line-height: $lh-normal;
+  position: relative;
+  padding-left: $sp-md;
+
+  &::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+  }
 }

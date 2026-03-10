@@ -4,7 +4,7 @@ import { NavLinks } from '../Links/NavLinks.js'
 
 function renderBranding({ title, logoSrc, kirSrc }) {
   return `
-    <a href="index.html" class="logo-link">
+    <a href="#/" class="logo-link">
       <div class="branding-wrapper">
         <div class="branding-name">
           <span>rehi</span>
@@ -24,7 +24,8 @@ export function Header({
   title = '',
   logoSrc = '',
   kirSrc = '',
-  inner = false
+  inner = false,
+  currentPage = 'home'
 } = {}) {
   const className = getSectionClass('card-header', inner)
 
@@ -33,7 +34,7 @@ export function Header({
       ${renderBranding({ title, logoSrc, kirSrc })}
       <div class="category-wrapper">
         ${SocialLinks()}
-        ${NavLinks()}
+        ${NavLinks({ currentPage })}
       </div>
     </div>
   `

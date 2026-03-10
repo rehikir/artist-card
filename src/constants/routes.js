@@ -2,16 +2,18 @@
 export const ROUTES = {
   HOME: 'home',
   RULES: 'rules',
-  PRICES: 'prices'
+  PRICES: 'prices',
+  FAQ: 'faq'
 }
 
 export const ROUTE_PATTERNS = {
   [ROUTES.RULES]: 'rules',
-  [ROUTES.PRICES]: 'prices'
+  [ROUTES.PRICES]: 'prices',
+  [ROUTES.FAQ]: 'faq'
 }
 
-// Get current route from pathname
-export const getCurrentRoute = (pathname = window.location.pathname) => {
+// Get current route from pathname (legacy, for reference)
+export const getCurrentRouteFromPath = (pathname = window.location.pathname) => {
   for (const [route, pattern] of Object.entries(ROUTE_PATTERNS)) {
     if (pathname.includes(pattern)) return route
   }

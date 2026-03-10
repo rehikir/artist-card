@@ -1,6 +1,18 @@
 import { getSectionClass } from '../../constants/classNames.js'
+import { FaqContent } from './FaqContent.js'
+import { RulesContent } from './RulesContent.js'
+import { PricesContent } from './PricesContent.js'
 
-export function Body({ inner = false } = {}) {
+const pageContent = {
+  faq: FaqContent,
+  rules: RulesContent,
+  prices: PricesContent
+}
+
+export function Body({ inner = false, page = 'home' } = {}) {
   const className = getSectionClass('card-body', inner)
-  return `<div class="${className}"></div>`
+  const ContentComponent = pageContent[page]
+  const content = ContentComponent ? ContentComponent() : ''
+
+  return `<div class="${className}">${content}</div>`
 }

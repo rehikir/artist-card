@@ -1,27 +1,33 @@
 import './styles/main.scss'
 import { createApp, initApp } from './components/App.js'
-import { siteConfig, getPageTitle } from './config/site.js'
-import { getCurrentRoute, isInnerPage } from './constants/routes.js'
+import { getPageTitle } from './config/site.js'
 import { getBodyClass } from './constants/classNames.js'
+import { initRouter, getCurrentRoute, isInnerPage, getPageData } from './utils/router.js'
 
-// Initialize the application
+// Initialize the application as SPA
 document.addEventListener('DOMContentLoaded', () => {
   const app = document.getElementById('app')
   if (app) {
-    // Determine current page using centralized route detection
-    const page = getCurrentRoute()
-    const isInner = isInnerPage(page)
+    // Initialize SPA router with page change handler
+    initRouter((page) => {
+      const isInner = isInnerPage(page)
+      const { title } = getPageData(page)
 
-    // Set body class using centralized utility
-    const bodyClass = getBodyClass(isInner)
-    if (bodyClass) {
-      document.body.classList.add(bodyClass)
-    }
+      // Update body class
+      document.body.className = ''
+      const bodyClass = getBodyClass(isInner)
+      if (bodyClass) {
+        document.body.classList.add(bodyClass)
+      }
 
-    // Set document title from centralized config
-    document.title = getPageTitle(page)
+      // Update document title
+      document.title = title
 
-    app.innerHTML = createApp({ page, isInner })
-    initApp()
+      // Re-render app content
+      app.innerHTML = createApp({ page, isInner })
+
+      // Re-initialize animations for new content
+      initApp()
+    })
   }
 })
