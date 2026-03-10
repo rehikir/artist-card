@@ -1,12 +1,13 @@
 @use 'variables' as *;
 
 .link {
+  position: relative;
   width: fit-content;
   max-width: 100%;
 
   display: flex;
   align-items: center;
-  padding: 0 $sp-sm $sp-sm $sp-sm;
+  padding: 0 $sp-xl $sp-sm $sp-sm;
   gap: $sp-sm;
 
   font-size: $fs-h3;
@@ -14,24 +15,48 @@
   border: solid rgba($color-primary, $op-20);
   border-width: 0 0 1px 1px;
 
+  // Extended hit area for easier clicking and future animations
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -$sp-xl;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+    color: rgba($color-secondary, $op-60);
+  }
+
   // Allow text to wrap on small screens
   .link-text {
     word-break: break-word;
     hyphens: auto;
   }
 
-  &:hover {
-    color: rgba($color-primary, $op-60);
+  &--cta {
+    background-color: $color-primary;
+    color: $color-secondary;
+    border: none;
   }
 
   &--disabled {
     opacity: $op-disabled;
-    cursor: not-allowed;
+    pointer-events: none;
 
     &:hover {
-      color: $color-primary;
+      color: inherit;
+      background-color: inherit;
     }
   }
+}
+
+// Directional hit areas based on layout context
+.category-section--inline .link::before {
+  inset: -$sp-xl 0;  // vertical only for inline links
+}
+
+.category-section:not(.category-section--inline) .link::before {
+  inset: 0 (-$sp-xl);  // horizontal only for column links
 }
 
 .link-icon {

@@ -1,12 +1,9 @@
 @use 'variables' as *;
 
-.footer-wrapper {
+.card-footer {
   display: flex;
   flex-direction: column;
-  gap: $sp-xl;
-}
-
-.card-footer {
+  gap: $sp-md;
   &--inner-page {
     .status {
       font-size: $fs-h3;

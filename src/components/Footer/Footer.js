@@ -1,16 +1,14 @@
 import { getSectionClass } from '../../constants/classNames.js'
 import { StatusSection } from './StatusSection.js'
+import { ContactSection } from './ContactSection.js'
 
-export function Footer({
-  maxSlots = 5,
-  takenSlots = 0,
-  inner = false
-} = {}) {
+export function Footer({ inner = false } = {}) {
   const className = getSectionClass('card-footer', inner)
 
   return `
-    <div class="${className}">
-      ${StatusSection({ maxSlots, takenSlots })}
-    </div>
+    <footer class="${className}">
+      ${ContactSection()}
+      ${StatusSection()}
+    </footer>
   `
 }

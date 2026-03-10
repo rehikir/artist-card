@@ -3,7 +3,6 @@ import { getCardClass } from '../constants/classNames.js'
 import { Header } from './Header/Header.js'
 import { Body } from './Body/Body.js'
 import { Footer } from './Footer/Footer.js'
-import { slotConfig } from '../config/slots.js'
 
 export function createApp({ page = 'home', isInner = false } = {}) {
   return `
@@ -18,7 +17,7 @@ export function createApp({ page = 'home', isInner = false } = {}) {
 
       ${Body({ inner: isInner, page })}
 
-      ${Footer({ ...slotConfig, inner: isInner })}
+      ${Footer({ inner: isInner })}
     </div>
   `
 }

@@ -30,12 +30,12 @@ export function Header({
   const className = getSectionClass('card-header', inner)
 
   return `
-    <div class="${className}">
+    <header class="${className}">
       ${renderBranding({ title, logoSrc, kirSrc })}
       <div class="category-wrapper">
         ${SocialLinks()}
         ${NavLinks({ currentPage })}
       </div>
-    </div>
+    </header>
   `
 }

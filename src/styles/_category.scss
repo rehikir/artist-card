@@ -9,6 +9,7 @@
 .category-section {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: $sp-sm;
   padding-left: $sp-xl;
 

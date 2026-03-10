@@ -7,7 +7,6 @@
   }
   body {
     background-color: $color-secondary;
-
     align-items: normal;
   }
 
@@ -15,14 +14,24 @@
   .card {
     border-radius: 0;
     background: transparent;
-    padding-bottom: 0;
 
     gap: $sp-2xl;
   }
 
-  .links-list {
+  // Remove fixed height on mobile to allow content to fit
+  .card--home {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .category-section {
     &--inline {
       flex-direction: column;
+
+      // Switch hit area to horizontal for column layout
+      .link::before {
+        inset: 0 (-$sp-md);
+      }
     }
   }
 

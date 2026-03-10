@@ -44,7 +44,7 @@ export const navLinks = [
     disabled: false,
     route: 'prices'
   },
-  { text: 'Contact me', href: null, disabled: true },
+  { text: 'Contact me', href: null, disabled: true, variant: 'cta' },
 ]
 
 // Helper to get nav links with current page state
