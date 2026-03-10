@@ -2,7 +2,7 @@
 
 .price-columns {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15.625em, 1fr)); // 250px
+  grid-template-columns: repeat(auto-fit, minmax(15.625em, 1fr));
   gap: $sp-lg;
 }
 
@@ -16,7 +16,7 @@
   font-size: $fs-h3;
   font-weight: $fw-base;
   padding-bottom: $sp-sm;
-  border-bottom: 0.0625em solid rgba($color-primary, 0.1); // 1px at 16px base
+  border-bottom: $border-thin solid rgba($color-primary, $op-20);
 }
 
 .price-col-inner {
@@ -59,7 +59,7 @@
 
 .price-amount {
   font-weight: $fw-base;
-  min-width: 3.75em; // 60px
+  min-width: 3.75em;
   text-align: right;
 }
 
