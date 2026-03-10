@@ -1,4 +1,7 @@
-import { CategoryCaption, CategorySection, CategoryWrapper, FooterWrapper } from './index.js'
+import { CategoryWrapper } from '../../layout/Category/CategoryWrapper.js'
+import { CategorySection } from '../../layout/Category/CategorySection.js'
+import { CategoryCaption } from '../../layout/Category/CategoryCaption.js'
+import { FooterWrapper } from '../../layout/Wrapper/FooterWrapper.js'
 
 function renderStatusContent(message) {
   return `
@@ -11,7 +14,7 @@ function renderStatusContent(message) {
 
 export function StatusSection({ maxSlots = 5, takenSlots = 0 } = {}) {
   const availableSlots = maxSlots - takenSlots
-  const statusMessage = availableSlots > 0 
+  const statusMessage = availableSlots > 0
     ? `Available slots: ${availableSlots}`
     : 'No slots available.'
 

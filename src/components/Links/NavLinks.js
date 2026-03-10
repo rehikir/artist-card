@@ -1,5 +1,5 @@
-import { LinkList } from './index.js'
-import { getNavLinks } from '../config/navLinks.js'
+import { LinkList } from './LinkList.js'
+import { getNavLinks } from '../../config/navigation.js'
 
 export function NavLinks({ currentPage = 'home' } = {}) {
   return LinkList({ category: 'More Info', links: getNavLinks(currentPage), inline: true })

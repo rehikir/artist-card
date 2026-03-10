@@ -1,4 +1,5 @@
-import { CategoryCaption, CategorySection } from './index.js'
+import { CategoryCaption } from '../../layout/Category/CategoryCaption.js'
+import { CategorySection } from '../../layout/Category/CategorySection.js'
 
 function renderLink(link) {
   const { href, target, rel, iconSrc, iconAlt, text } = link
@@ -16,7 +17,7 @@ function renderLink(link) {
   `
 }
 
-export function LinkList({ category = 'My Works', links = [], inline = false }) {
+export function LinkList({ category = 'My Works', links = [], inline = false } = {}) {
   if (!Array.isArray(links)) links = []
 
   return `

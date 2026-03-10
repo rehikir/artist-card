@@ -1,24 +1,27 @@
 import './styles/main.scss'
 import { createApp, initApp } from './components/App.js'
-import { pages } from './config/pages.js'
+import { siteConfig, getPageTitle } from './config/site.js'
+import { getCurrentRoute, isInnerPage } from './constants/routes.js'
+import { getBodyClass } from './constants/classNames.js'
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
   const app = document.getElementById('app')
   if (app) {
-    // Determine current page by pathname
-    let page = 'home'
-    if (window.location.pathname.includes('rules')) page = 'rules'
-    if (window.location.pathname.includes('prices')) page = 'prices'
+    // Determine current page using centralized route detection
+    const page = getCurrentRoute()
+    const isInner = isInnerPage(page)
 
-    const isInner = page !== 'home'
-    document.body.classList.toggle('body--inner-page', isInner)
+    // Set body class using centralized utility
+    const bodyClass = getBodyClass(isInner)
+    if (bodyClass) {
+      document.body.classList.add(bodyClass)
+    }
 
-    // Set document title from config
-    document.title = pages[page]?.title || pages.home.title
+    // Set document title from centralized config
+    document.title = getPageTitle(page)
 
     app.innerHTML = createApp({ page, isInner })
-    // Initialize app
     initApp()
   }
 })

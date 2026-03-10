@@ -1,33 +1,29 @@
-import { Header, Body, Footer } from './index.js'
+import { siteConfig, getPageTitle, getPageSuffix } from '../config/site.js'
+import { getCardClass } from '../constants/classNames.js'
+import { Header } from './Header/Header.js'
+import { Body } from './Body/Body.js'
+import { Footer } from './Footer/Footer.js'
 import { slotConfig } from '../config/slots.js'
-import { images } from '../config/pages.js'
+import { initAnimations } from '../utils/animations.js'
 
 export function createApp({ page = 'home', isInner = false } = {}) {
-  const titles = {
-    home: 'Commissions',
-    rules: 'Rules & Terms',
-    prices: 'Prices'
-  }
-  const title = titles[page] || 'Commissions'
-  const cardClass = `card ${isInner ? 'card--inner-page' : 'card--home'}`
-
   return `
-    <div class="${cardClass}">
+    <div class="${getCardClass(isInner)}">
       ${Header({
-        title,
-        logoSrc: images.logo,
-        kirSrc: images.kir,
+        title: getPageSuffix(page),
+        logoSrc: siteConfig.images.logo,
+        kirSrc: siteConfig.images.kir,
         inner: isInner
       })}
 
       ${Body({ inner: isInner })}
 
-      ${Footer(slotConfig, isInner)}
+      ${Footer({ ...slotConfig, inner: isInner })}
     </div>
   `
 }
 
-// Initialize app (no animations for now)
+// Initialize app with animations
 export function initApp() {
-  // Animations removed for reconsideration
+  initAnimations()
 }

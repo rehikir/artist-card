@@ -1,17 +1,19 @@
-// Layout components
-export { CategoryCaption } from './CategoryCaption.js'
-export { CategorySection } from './CategorySection.js'
-export { CategoryWrapper } from './CategoryWrapper.js'
-export { FooterWrapper } from './FooterWrapper.js'
+// Main app
+export { createApp, initApp } from './App.js'
 
 // Feature components
-export { LinkList } from './LinkList.js'
-export { SocialLinks } from './SocialLinks.js'
-export { NavLinks } from './NavLinks.js'
-export { StatusSection } from './StatusSection.js'
+export { Header } from './Header/Header.js'
+export { Body } from './Body/Body.js'
+export { Footer } from './Footer/Footer.js'
+export { StatusSection } from './Footer/StatusSection.js'
 
-// Main components
-export { Header } from './Header.js'
-export { Body } from './Body.js'
-export { Footer } from './Footer.js'
-export { createApp, initApp } from './App.js'
+// Links components
+export { LinkList } from './Links/LinkList.js'
+export { SocialLinks } from './Links/SocialLinks.js'
+export { NavLinks } from './Links/NavLinks.js'
+
+// Layout components (re-export for convenience)
+export { CategoryCaption } from '../layout/Category/CategoryCaption.js'
+export { CategorySection } from '../layout/Category/CategorySection.js'
+export { CategoryWrapper } from '../layout/Category/CategoryWrapper.js'
+export { FooterWrapper } from '../layout/Wrapper/FooterWrapper.js'

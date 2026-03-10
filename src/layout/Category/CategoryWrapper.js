@@ -1,4 +1,4 @@
-export function CategoryWrapper({ children = '' }) {
+export function CategoryWrapper({ children = '' } = {}) {
   return `
     <div class="category-wrapper">
       ${children}
