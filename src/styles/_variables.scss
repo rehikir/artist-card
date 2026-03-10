@@ -1,0 +1,123 @@
+// ===================================
+// COLOR PALETTE
+// ===================================
+
+// Brand colors
+$color-primary: #1a1a1a;
+$color-secondary: #ebebeb;
+
+// ===================================
+// TYPOGRAPHY
+// ===================================
+
+// Font families
+$font-main: 'Martian Mono', monospace;
+$font-alt: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+// Font sizes (in rem, relative to parent)
+$fs-xs: 0.75rem;
+$fs-p1: 1rem;
+$fs-h3: 1.75rem;
+$fs-h1: 4.1875em;
+
+// Font weights
+$fw-base: 200;
+
+// Line heights
+$lh-none: 1;
+$lh-normal: 1.5;
+$lh-loose: 2;
+
+// Letter spacing
+$tight: -10%;
+
+// Text transform
+$tt-up: uppercase;
+$tt-lw: lowercase;
+
+//
+$none: none;
+
+// SPACING
+
+$sp-0: 0;
+$sp-xs: 0.25rem;
+$sp-sm: 0.5rem;
+$sp-md: 1rem;
+$sp-lg: 1.5rem;
+$sp-xl: 2rem;
+$sp-2xl: 3rem;
+$sp-3xl: 4rem;
+$sp-4xl: 5rem;
+
+
+// ===================================
+// SIZING
+// ===================================
+
+// Icon sizes
+$icon-size-base: 1rem; // 16px
+$icon-size-wrapper: 2rem; // 32px
+
+// ===================================
+// BORDER RADIUS
+// ===================================
+
+$radius-card: 12px;
+
+// ===================================
+// Z-INDEX
+// ===================================
+
+$z-base: 0;
+$z-dropdown: 100;
+$z-sticky: 200;
+$z-fixed: 300;
+$z-overlay: 400;
+$z-modal: 500;
+$z-popup: 600;
+$z-tooltip: 700;
+$z-toast: 800;
+
+// Responsive helpers
+$breakpoint-card: 67.5rem; // 1080px
+
+
+// ===================================
+// TRANSITIONS
+// ===================================
+
+$anim-duration-anim-fast: 150ms;
+$anim-duration-normal: 200ms;
+$anim-duration-slow: 300ms;
+$anim-duration-slower: 500ms;
+
+$anim-timing-default: cubic-bezier(0.4, 0, 0.2, 1);
+$anim-timing-linear: linear;
+$anim-timing-in: cubic-bezier(0.4, 0, 1, 1);
+$anim-timing-out: cubic-bezier(0, 0, 0.2, 1);
+$anim-timing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+// Transition presets
+$anim-fast: $anim-duration-anim-fast $anim-timing-default;
+$anim-normal: $anim-duration-normal $anim-timing-default;
+$anim-slow: $anim-duration-slow $anim-timing-default;
+
+
+// ===================================
+// OPACITY
+// ===================================
+
+$op-0: 0;
+$op-5: 0.05;
+$op-10: 0.1;
+$op-20: 0.2;
+$op-40: 0.4;
+$op-60: 0.6;
+$op-80: 0.8;
+$op-100: 1;
+
+// Component opacity
+$op-disabled: $op-20;
+$op-placeholder: $op-20;
+$op-hover: $op-20;

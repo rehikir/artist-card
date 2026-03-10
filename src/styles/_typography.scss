@@ -1,0 +1,96 @@
+@use 'variables' as *;
+
+// ===================================
+// FONT FACE
+// ===================================
+
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wdth,wght@75,100..800&display=swap');
+
+// ===================================
+// BASE TYPOGRAPHY
+// ===================================
+
+body {
+  font-family: $font-main;
+  font-weight: $fw-base;
+  font-size: $fs-p1;
+  line-height: $lh-none;
+  color: $color-primary;
+  letter-spacing: $tight;
+  text-transform: $tt-up;
+  font-stretch: 75%;
+}
+
+a {
+  text-decoration: $none;
+  color: $color-primary;
+}
+
+// ===================================
+// FONT SIZE UTILITIES
+// ===================================
+
+.text-xs {
+  font-size: $fs-xs;
+}
+
+.text-p1 {
+  font-size: $fs-p1;
+}
+
+.text-h3 {
+  font-size: $fs-h3;
+}
+
+.text-h1 {
+  font-size: $fs-h1;
+}
+
+
+// ===================================
+// FONT WEIGHT UTILITIES
+// ===================================
+
+.font-base {
+  font-weight: $fw-base;
+}
+
+// ===================================
+// LINE HEIGHT UTILITIES
+// ===================================
+
+.leading-none {
+  line-height: $lh-none;
+}
+
+.leading-normal {
+  line-height: $lh-normal;
+}
+
+.leading-loose {
+  line-height: $lh-loose;
+}
+
+// ===================================
+// LETTER SPACING UTILITIES
+// ===================================
+
+.tracking-tight {
+  letter-spacing: $tight;
+}
+
+.tracking-normal {
+  letter-spacing: normal;
+}
+
+// ===================================
+// TEXT TRANSFORM UTILITIES
+// ===================================
+
+.tt-none {
+  text-transform: $none;
+}
+
+.lowercase {
+  text-transform: $tt-lw;
+}

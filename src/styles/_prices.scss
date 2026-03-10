@@ -1,0 +1,90 @@
+@use 'variables' as *;
+
+.price-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15.625em, 1fr)); // 250px
+  gap: $sp-lg;
+}
+
+.price-col {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-sm;
+}
+
+.price-col-title {
+  font-size: $fs-h3;
+  font-weight: $fw-base;
+  padding-bottom: $sp-sm;
+  border-bottom: 0.0625em solid rgba($color-primary, 0.1);
+}
+
+.price-col-inner {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-md;
+}
+
+.price-group {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-xs;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: $fs-p1;
+}
+
+.price-row-name {
+  flex: 1;
+}
+
+.price-row-details {
+  display: flex;
+  align-items: center;
+  gap: $sp-md;
+
+  &--end {
+    justify-content: flex-end;
+  }
+}
+
+.price-modifier-label {
+  font-size: $fs-xs;
+  opacity: $op-60;
+}
+
+.price-amount {
+  font-weight: $fw-base;
+  min-width: 3.75em; // 60px
+  text-align: right;
+}
+
+.terms-list {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-md;
+}
+
+.term-entry {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-xs;
+}
+
+.term-main-text {
+  font-size: $fs-p1;
+  line-height: $lh-normal;
+}
+
+.term-note-row {
+  padding-left: $sp-md;
+}
+
+.term-note-text {
+  font-size: $fs-xs;
+  opacity: $op-60;
+}

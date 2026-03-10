@@ -1,0 +1,33 @@
+@use 'variables' as *;
+
+.footer-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-xl;
+}
+
+.card-footer {
+    &--home {
+
+    }
+    &--inner-page {
+        .status {
+            font-size: $fs-h3;
+
+            .status-intro {
+                display: none;
+            }
+        }
+    }
+}
+
+.status {
+  display: flex;
+  gap: $sp-xs;
+
+  font-size: $fs-h1;
+}
+
+.status-text {
+
+}

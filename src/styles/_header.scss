@@ -1,0 +1,46 @@
+@use 'variables' as *;
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-xl;
+
+  font-size: $fs-h1;
+
+  &--home {
+    // home-specific header styles
+  }
+
+  &--inner-page {
+    // inner page header tweaks
+  }
+}
+
+.branding-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-xs;
+  
+  line-height: 0.1;
+  text-transform: $none;
+}
+
+.branding-name {
+  display: flex;
+  align-items: center;
+  gap: $sp-xs;
+}
+
+.branding-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $sp-md;
+
+  padding-right: $sp-xl;
+}
+
+.branding-logo {
+  height: 100%;
+  width: auto;
+}

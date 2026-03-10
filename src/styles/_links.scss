@@ -1,0 +1,63 @@
+@use 'variables' as *;
+
+.links-list {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-sm;
+
+  &--inline {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.link {
+  width: fit-content;
+
+  display: flex;
+  align-items: center;
+  padding: 0 $sp-sm $sp-sm $sp-sm;
+  gap: $sp-sm;
+
+  font-size: $fs-h3;
+
+  border: solid rgba($color-primary, $op-20);
+  border-width: 0 0 1px 1px;
+
+  &:hover {
+    color: rgba($color-primary, $op-60);
+  }
+
+  &--disabled {
+    opacity: $op-disabled;
+    cursor: not-allowed;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}
+
+.link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $icon-size-wrapper;
+  height: $icon-size-wrapper;
+  flex-shrink: 0;
+  background-color: $color-primary;
+
+  img {
+    width: $icon-size-base;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &--empty {
+    display: none;
+  }
+}
+
+.link-text {
+  
+}
