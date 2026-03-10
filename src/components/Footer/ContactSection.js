@@ -10,7 +10,7 @@ export function ContactSection() {
     inline: true,
     children: Link({
       href: hasAvailableSlots ? 'https://forms.google.com/your-form-id' : null,
-      text: 'Contact me',
+      text: 'Fill Form',
       target: '_blank',
       rel: 'noopener',
       variant: 'cta'

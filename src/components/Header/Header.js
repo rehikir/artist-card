@@ -10,11 +10,8 @@ function renderBranding({ title, logoSrc, kirSrc }) {
           <span>rehi</span>
           <img src="${kirSrc}" alt="kir" class="branding-logo" />
         </div>
-
-        <div class="branding-page">
-          <span class="branding-page-title">${title}</span>
-          <img src="${logoSrc}" alt="fox logo" class="branding-logo" />
-        </div>
+        <span class="branding-page-title">${title}</span>
+        <img src="${logoSrc}" alt="fox logo" class="branding-logo branding-logo--page" />
       </div>
     </a>
   `
@@ -33,8 +30,8 @@ export function Header({
     <header class="${className}">
       ${renderBranding({ title, logoSrc, kirSrc })}
       <div class="category-wrapper">
-        ${SocialLinks()}
         ${NavLinks({ currentPage })}
+        ${SocialLinks()}
       </div>
     </header>
   `

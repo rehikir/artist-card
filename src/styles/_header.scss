@@ -9,34 +9,51 @@
 }
 
 .branding-wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: $sp-xs;
 
-  line-height: 0;
   text-transform: $none;
 }
 
 .branding-name {
+  position: relative;
   display: flex;
   align-items: center;
-}
+  line-height: 1;
 
-.branding-page {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding-right: $sp-xl;
+  span {
+    background-color: $color-secondary;
+  }
 }
 
 .branding-page-title {
-  word-wrap: break-word;
+  display: inline-block;
+  padding-right: $sp-3xl;
+  word-break: break-word;
+  background-color: $color-secondary;
+}
+
+.logo-link:hover .branding-name span,
+.logo-link:hover .branding-page-title {
+  background-color: $color-primary;
+  color: $color-secondary;
 }
 
 .branding-logo {
-  height: .75em;
+  height: $fs-h1;
   width: auto;
+
+  &--page {
+    position: absolute;
+    top: $fs-h1;
+    right: $sp-xl;
+    margin-top: $sp-xs;
+  }
+}
+
+.logo-link:hover .branding-logo--page {
+  opacity: 0;
 }
 
 // Category wrapper in header - constrain width and allow wrapping

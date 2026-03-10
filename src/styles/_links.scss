@@ -56,7 +56,7 @@
 }
 
 .category-section:not(.category-section--inline) .link::before {
-  inset: 0 (-$sp-xl);  // horizontal only for column links
+  inset: -$sp-sm (-$sp-xl);  // horizontal only for column links
 }
 
 .link-icon {
