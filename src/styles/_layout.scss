@@ -2,28 +2,22 @@
 
 @media (max-width: $mobile-breakpoint) {
   // Change body background to card color
+  html {
+    font-size: 12px;
+  }
   body {
     background-color: $color-secondary;
-    font-size: $fs-xs;
 
     align-items: normal;
   }
 
   // Card becomes full width and transparent
   .card {
-    min-width: 100vw;
-    width: 100%;
-    height: auto;
     border-radius: 0;
     background: transparent;
     padding-bottom: 0;
 
     gap: $sp-2xl;
-  }
-
-  .branding-logo {
-    height: 100%;
-    width: auto;
   }
 
   .links-list {

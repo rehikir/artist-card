@@ -1,6 +1,4 @@
-import { CategoryWrapper } from '../../layout/Category/CategoryWrapper.js'
-import { CategorySection } from '../../layout/Category/CategorySection.js'
-import { CategoryCaption } from '../../layout/Category/CategoryCaption.js'
+import { Category } from '../index.js'
 import { FooterWrapper } from '../../layout/Wrapper/FooterWrapper.js'
 
 function renderStatusContent(message) {
@@ -18,16 +16,10 @@ export function StatusSection({ maxSlots = 5, takenSlots = 0 } = {}) {
     ? `Available slots: ${availableSlots}`
     : 'No slots available.'
 
-  return `
-    ${CategoryWrapper({
-      children: `
-        ${CategoryCaption({ label: 'Request Art' })}
-        ${CategorySection({
-          children: FooterWrapper({
-            children: renderStatusContent(statusMessage)
-          })
-        })}
-      `
-    })}
-  `
+  return Category({
+    caption: 'Request Art',
+    children: FooterWrapper({
+      children: renderStatusContent(statusMessage)
+    })
+  })
 }

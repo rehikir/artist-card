@@ -6,41 +6,44 @@
   gap: $sp-xl;
 
   font-size: $fs-h1;
-
-  &--home {
-    // home-specific header styles
-  }
-
-  &--inner-page {
-    // inner page header tweaks
-  }
 }
 
 .branding-wrapper {
   display: flex;
   flex-direction: column;
   gap: $sp-xs;
-  
-  line-height: 0.1;
+
+  line-height: 0;
   text-transform: $none;
 }
 
 .branding-name {
   display: flex;
   align-items: center;
-  gap: $sp-xs;
 }
 
 .branding-page {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: $sp-md;
 
   padding-right: $sp-xl;
 }
 
+.branding-page-title {
+  word-wrap: break-word;
+}
+
 .branding-logo {
-  height: 100%;
+  height: 1em;
   width: auto;
+}
+
+// Category wrapper in header - constrain width and allow wrapping
+.card-header .category-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-md;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }

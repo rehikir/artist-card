@@ -1,18 +1,8 @@
 @use 'variables' as *;
 
-.links-list {
-  display: flex;
-  flex-direction: column;
-  gap: $sp-sm;
-
-  &--inline {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-}
-
 .link {
   width: fit-content;
+  max-width: 100%;
 
   display: flex;
   align-items: center;
@@ -23,6 +13,12 @@
 
   border: solid rgba($color-primary, $op-20);
   border-width: 0 0 1px 1px;
+
+  // Allow text to wrap on small screens
+  .link-text {
+    word-break: break-word;
+    hyphens: auto;
+  }
 
   &:hover {
     color: rgba($color-primary, $op-60);
@@ -56,8 +52,4 @@
   &--empty {
     display: none;
   }
-}
-
-.link-text {
-  
 }

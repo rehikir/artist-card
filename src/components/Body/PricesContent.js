@@ -1,12 +1,13 @@
-import { CategoryCaption } from '../../layout/Category/CategoryCaption.js'
-import { CategorySection } from '../../layout/Category/CategorySection.js'
+import { Category } from '../index.js'
 
 export function PricesContent() {
   return `
-    ${CategoryCaption({ label: 'Prices' })}
-    ${CategorySection({
+    ${Category({
+      caption: 'Prices',
       children: `
-        <!-- Add your pricing content here -->
+        <div class="price-columns">
+          <!-- Add your price columns here -->
+        </div>
       `
     })}
   `

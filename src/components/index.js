@@ -12,8 +12,9 @@ export { LinkList } from './Links/LinkList.js'
 export { SocialLinks } from './Links/SocialLinks.js'
 export { NavLinks } from './Links/NavLinks.js'
 
-// Layout components (re-export for convenience)
+// Layout components
+export { Category } from '../layout/Category/Category.js'
+export { CategoryWrapper } from '../layout/Category/CategoryWrapper.js'
 export { CategoryCaption } from '../layout/Category/CategoryCaption.js'
 export { CategorySection } from '../layout/Category/CategorySection.js'
-export { CategoryWrapper } from '../layout/Category/CategoryWrapper.js'
 export { FooterWrapper } from '../layout/Wrapper/FooterWrapper.js'

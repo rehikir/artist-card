@@ -7,18 +7,15 @@
 }
 
 .card-footer {
-    &--home {
+  &--inner-page {
+    .status {
+      font-size: $fs-h3;
 
+      .status-intro {
+        display: none;
+      }
     }
-    &--inner-page {
-        .status {
-            font-size: $fs-h3;
-
-            .status-intro {
-                display: none;
-            }
-        }
-    }
+  }
 }
 
 .status {
@@ -26,8 +23,4 @@
   gap: $sp-xs;
 
   font-size: $fs-h1;
-}
-
-.status-text {
-
 }

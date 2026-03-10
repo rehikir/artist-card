@@ -6,17 +6,26 @@
   gap: $sp-md;
 }
 
-.category {
+.category-section {
   display: flex;
   flex-direction: column;
   gap: $sp-md;
   padding-left: $sp-xl;
+
+  &--inline {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
 .category-caption {
   display: flex;
   align-items: center;
   text-transform: $none;
+
+  img {
+    width: 2rem;
+  }
 }
 
 .category-caption-label {

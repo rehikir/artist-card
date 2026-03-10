@@ -1,12 +1,13 @@
-import { CategoryCaption } from '../../layout/Category/CategoryCaption.js'
-import { CategorySection } from '../../layout/Category/CategorySection.js'
+import { Category } from '../index.js'
 
 export function RulesContent() {
   return `
-    ${CategoryCaption({ label: 'Rules & Terms' })}
-    ${CategorySection({
+    ${Category({
+      caption: 'Rules & Terms',
       children: `
-        <!-- Add your rules content here -->
+        <div class="rules-list">
+          <!-- Add your rules here -->
+        </div>
       `
     })}
   `

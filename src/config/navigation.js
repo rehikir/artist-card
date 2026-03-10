@@ -20,7 +20,7 @@ export const socialLinks = [
     rel: 'noopener'
   },
   {
-    href: '#',
+    href: 'https://snootbooru.com/posts/query=rehikir',
     text: 'snootbooru.com/...',
     iconSrc: './images/snootbooru_logo.svg',
     iconAlt: 'Snootbooru logo',
@@ -44,7 +44,7 @@ export const navLinks = [
     disabled: false,
     route: 'prices'
   },
-  { text: 'Contact me', href: null, disabled: true }
+  { text: 'Contact me', href: null, disabled: true },
 ]
 
 // Helper to get nav links with current page state
