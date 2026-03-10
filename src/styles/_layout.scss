@@ -1,8 +1,5 @@
 @use 'variables' as *;
 
-// Mobile breakpoint (adjust as needed)
-$mobile-breakpoint: 60rem; // 768px
-
 @media (max-width: $mobile-breakpoint) {
   // Change body background to card color
   body {
@@ -22,6 +19,11 @@ $mobile-breakpoint: 60rem; // 768px
     padding-bottom: 0;
 
     gap: $sp-2xl;
+  }
+
+  .branding-logo {
+    height: 100%;
+    width: auto;
   }
 
   .links-list {
