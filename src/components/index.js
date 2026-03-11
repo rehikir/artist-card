@@ -7,6 +7,7 @@ export { Body } from './Body/Body.js'
 export { Footer } from './Footer/Footer.js'
 export { StatusSection } from './Footer/StatusSection.js'
 export { ContactSection } from './Footer/ContactSection.js'
+export { Cursor } from './Cursor/Cursor.js'
 
 // Links components
 export { LinkList, renderLink } from './Links/LinkList.js'

@@ -1,0 +1,47 @@
+@use 'variables' as *;
+
+@media (min-width: 48rem) {
+  body, a, button, .link, [role="button"] {
+    cursor: none !important;
+  }
+
+  .cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: .75rem;
+    height: 1.25rem;
+    background-color: $color-primary;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    animation: cursor-blink .8s steps(2, start) infinite;
+
+    &--active {
+      width: calc(100% + 16px);
+      height: calc(100% + 16px);
+      background-color: transparent;
+      border: 2px solid rgba($color-primary, $op-20);
+      animation: none;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border: 1px solid rgba($color-primary, $op-20);
+        animation: cursor-pulse 1s ease-out infinite;
+      }
+    }
+  }
+}
+
+@keyframes cursor-blink {
+  to { opacity: $op-20; }
+}
+
+@keyframes cursor-pulse {
+  to {
+    inset: -20%;
+    opacity: 0;
+  }
+}
