@@ -1,11 +1,17 @@
 @use 'variables' as *;
 
+// Hide cursor by default (mobile-first)
+.cursor {
+  display: none;
+}
+
 @media (min-width: 48rem) and (pointer: fine) {
   body, a, button, .link, [role="button"] {
     cursor: none !important;
   }
 
   .cursor {
+    display: block;
     position: fixed;
     top: 0;
     left: 0;
@@ -16,21 +22,39 @@
     z-index: 9999;
     transform: translate(-50%, -50%);
     animation: cursor-blink .8s steps(2, start) infinite;
+    overflow: visible;
 
     &--active {
-      width: calc(100% + 16px);
-      height: calc(100% + 16px);
+      width: 0;
+      height: 0;
       background-color: transparent;
-      border: 2px solid rgba($color-primary, $op-20);
+      border: none;
       animation: none;
 
       &::before {
         content: '';
-        position: absolute;
-        inset: 0;
-        border: 1px solid rgba($color-primary, $op-20);
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: var(--outline-w, 0px);
+        height: var(--outline-h, 0px);
+        background-color: rgba($color-primary, $op-20);
+        pointer-events: none;
+      }
+
+      &::after {
+        content: '';
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: var(--outline-w, 0px);
+        height: var(--outline-h, 0px);
+        background-color: rgba($color-primary, 0.05);
         transform-origin: center;
         animation: cursor-pulse 1s ease-out infinite;
+        pointer-events: none;
       }
     }
   }
@@ -42,7 +66,7 @@
 
 @keyframes cursor-pulse {
   to {
-    transform: scale(1.4);
+    transform: translate(-50%, -50%) scale(1.4);
     opacity: 0;
   }
 }

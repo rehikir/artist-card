@@ -1,149 +1,133 @@
 import { gsap } from 'gsap'
 
-const HIT_AREA = 16
-const SNAP_DURATION = 0.1
+const HIT_AREA = 8
+const SNAP_DURATION = 0.2
 const SELECTORS = 'a, button, .link'
 
-let cursor = null
-let isActive = false
-let currentEl = null
-let mouseX = 0, mouseY = 0
-let cursorW = 0, cursorH = 0
-let clickables = []
+let el = null
+let target = null
+let mouse = { x: 0, y: 0 }
 let rafId = null
 let enabled = false
+let cursorW = 0
+let cursorH = 0
 
-function updateClickables() {
-  clickables = [...document.querySelectorAll(SELECTORS)]
-}
+function findHitElement() {
+  const hitBox = HIT_AREA
+  const elements = document.querySelectorAll(SELECTORS)
 
-function isOver(el) {
-  const r = el.getBoundingClientRect()
-  const hitBox = HIT_AREA + Math.max(cursorW, cursorH) / 8
-  return (
-    mouseX >= r.left - hitBox &&
-    mouseX <= r.right + hitBox &&
-    mouseY >= r.top - hitBox &&
-    mouseY <= r.bottom + hitBox
-  )
-}
-
-function followMouse() {
-  if (!isActive) gsap.set(cursor, { x: mouseX, y: mouseY })
-}
-
-function activate(el) {
-  currentEl = el
-  isActive = true
-  cursor.classList.add('cursor--active')
-
-  const rect = el.getBoundingClientRect()
-  gsap.to(cursor, {
-    x: rect.left + rect.width / 2,
-    y: rect.top + rect.height / 2,
-    width: rect.width + HIT_AREA,
-    height: rect.height + HIT_AREA,
-    duration: SNAP_DURATION,
-    ease: 'power2.out',
-    overwrite: true
-  })
-}
-
-function deactivate() {
-  currentEl = null
-  isActive = false
-  cursor.classList.remove('cursor--active')
-
-  gsap.to(cursor, {
-    width: cursorW,
-    height: cursorH,
-    duration: SNAP_DURATION,
-    ease: 'power2.out',
-    overwrite: true
-  })
+  for (const el of elements) {
+    const r = el.getBoundingClientRect()
+    if (
+      mouse.x >= r.left - hitBox &&
+      mouse.x <= r.right + hitBox &&
+      mouse.y >= r.top - hitBox &&
+      mouse.y <= r.bottom + hitBox
+    ) {
+      return el
+    }
+  }
+  return null
 }
 
 function update() {
-  const target = clickables.find(isOver)
+  const hit = findHitElement()
 
-  if (target && target !== currentEl) {
-    activate(target)
-  } else if (!target && isActive) {
-    deactivate()
+  if (hit !== target) {
+    target = hit
+    if (hit) {
+      el.classList.add('cursor--active')
+      document.body.classList.remove('has-custom-cursor')
+    } else {
+      el.classList.remove('cursor--active')
+      document.body.classList.add('has-custom-cursor')
+    }
   }
 
-  // Keep outline synced on scroll/resize
-  if (isActive && currentEl) {
-    const rect = currentEl.getBoundingClientRect()
-    gsap.set(cursor, {
-      x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2
+  if (target) {
+    const rect = target.getBoundingClientRect()
+    const w = rect.width + HIT_AREA
+    const h = rect.height + HIT_AREA
+    const centerX = rect.left + rect.width / 2
+    const centerY = rect.top + rect.height / 2
+
+    gsap.to(el, {
+      x: centerX,
+      y: centerY,
+      '--outline-w': w + 'px',
+      '--outline-h': h + 'px',
+      duration: SNAP_DURATION,
+      ease: 'power2.out',
+      overwrite: true
     })
   } else {
-    followMouse()
+    gsap.to(el, {
+      x: mouse.x,
+      y: mouse.y,
+      '--outline-w': cursorW + 'px',
+      '--outline-h': cursorH + 'px',
+      duration: SNAP_DURATION,
+      ease: 'power2.out',
+      overwrite: true
+    })
   }
 
   rafId = requestAnimationFrame(update)
 }
 
-function init() {
-  cursor = document.querySelector('.cursor')
-  if (!cursor) return
+function onMouseMove(e) {
+  mouse.x = e.clientX
+  mouse.y = e.clientY
+}
 
-  // Only enable on desktop with fine pointer
+function init() {
+  el = document.querySelector('.cursor')
+  if (!el) return
+
   const isDesktop = window.matchMedia('(min-width: 48rem)').matches
   const isFinePointer = window.matchMedia('(pointer: fine)').matches
   enabled = isDesktop && isFinePointer
 
   if (!enabled) return
 
-  // Reset state
-  cursor.classList.remove('cursor--active')
-  gsap.set(cursor, { width: cursor.offsetWidth, height: cursor.offsetHeight, x: 0, y: 0 })
+  cursorW = el.offsetWidth
+  cursorH = el.offsetHeight
+  gsap.set(el, {
+    x: 0,
+    y: 0,
+    '--outline-w': cursorW + 'px',
+    '--outline-h': cursorH + 'px'
+  })
 
-  cursorW = cursor.offsetWidth
-  cursorH = cursor.offsetHeight
-
-  updateClickables()
-
-  // Mouse tracking
+  document.body.classList.add('has-custom-cursor')
   document.addEventListener('mousemove', onMouseMove, { passive: true })
-  window.addEventListener('scroll', updateClickables, { passive: true })
-  window.addEventListener('resize', onResize)
 
   update()
 }
 
 function destroy() {
-  if (!cursor) return
-
   if (rafId) cancelAnimationFrame(rafId)
   rafId = null
 
   document.removeEventListener('mousemove', onMouseMove)
-  window.removeEventListener('scroll', updateClickables)
-  window.removeEventListener('resize', onResize)
+  document.body.classList.remove('has-custom-cursor')
 
-  cursor.classList.remove('cursor--active')
-  gsap.set(cursor, { width: cursorW, height: cursorH, x: 0, y: 0 })
+  if (el) {
+    el.classList.remove('cursor--active')
+    gsap.set(el, {
+      x: 0,
+      y: 0,
+      '--outline-w': cursorW + 'px',
+      '--outline-h': cursorH + 'px'
+    })
+  }
 
-  cursor = null
-  isActive = false
-  currentEl = null
-  clickables = []
+  el = null
+  target = null
+  mouse = { x: 0, y: 0 }
+  cursorW = 0
+  cursorH = 0
   enabled = false
-}
-
-function onMouseMove(e) {
-  mouseX = e.clientX
-  mouseY = e.clientY
-  followMouse()
-}
-
-function onResize() {
-  cursorW = cursor.offsetWidth
-  cursorH = cursor.offsetHeight
-  updateClickables()
 }
 
 export { init, destroy }
