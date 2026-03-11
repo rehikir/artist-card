@@ -55,9 +55,9 @@
         transform: translate(-50%, -50%);
         width: var(--outline-w, 0px);
         height: var(--outline-h, 0px);
-        background-color: rgba($color-primary, 0.05);
+        border: 2px solid rgba($color-primary, $op-20);
         transform-origin: center;
-        animation: cursor-pulse 1s ease-out infinite;
+        animation: cursor-pulse 2s ease-out infinite;
         pointer-events: none;
       }
     }
