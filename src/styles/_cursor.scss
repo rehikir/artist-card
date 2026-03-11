@@ -1,6 +1,6 @@
 @use 'variables' as *;
 
-@media (min-width: 48rem) {
+@media (min-width: 48rem) and (pointer: fine) {
   body, a, button, .link, [role="button"] {
     cursor: none !important;
   }
@@ -29,6 +29,7 @@
         position: absolute;
         inset: 0;
         border: 1px solid rgba($color-primary, $op-20);
+        transform-origin: center;
         animation: cursor-pulse 1s ease-out infinite;
       }
     }
@@ -41,7 +42,7 @@
 
 @keyframes cursor-pulse {
   to {
-    inset: -20%;
+    transform: scale(1.4);
     opacity: 0;
   }
 }
