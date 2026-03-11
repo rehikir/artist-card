@@ -1,76 +1,72 @@
 @use 'variables' as *;
 
-// Hide cursor by default (mobile-first)
+// Bracket cursor - follows native cursor 1:1
 .cursor {
   display: none;
 }
 
 @media (min-width: 48rem) and (pointer: fine) {
-  body.has-custom-cursor,
-  body.has-custom-cursor a,
-  body.has-custom-cursor button,
-  body.has-custom-cursor .link,
-  body.has-custom-cursor [role="button"] {
-    cursor: none !important;
-  }
-
   .cursor {
     display: block;
     position: fixed;
     top: 0;
     left: 0;
-    width: .75rem;
-    height: 1.25rem;
-    background-color: $color-primary;
+    width: 24px;
+    height: 24px;
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
-    animation: cursor-blink .8s steps(2, start) infinite;
-    overflow: visible;
+    opacity: 0.6;
+    transition: opacity 0.15s ease;
+    --bracket-x: 12px;
+    --bracket-y: 12px;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+    }
+
+    // Left bracket [
+    &::before {
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 60%;
+      border-left: 1px solid $color-primary;
+      border-top: 1px solid $color-primary;
+      border-bottom: 1px solid $color-primary;
+      border-top-left-radius: 1px;
+      border-bottom-left-radius: 1px;
+    }
+
+    // Right bracket ]
+    &::after {
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 60%;
+      border-right: 1px solid $color-primary;
+      border-top: 1px solid $color-primary;
+      border-bottom: 1px solid $color-primary;
+      border-top-right-radius: 1px;
+      border-bottom-right-radius: 1px;
+    }
 
     &--active {
-      width: 0;
-      height: 0;
-      background-color: transparent;
-      border: none;
-      animation: none;
+      opacity: 1;
+      width: calc(var(--bracket-x) * 2);
+      height: calc(var(--bracket-y) * 2);
+      transition: none;
 
-      &::before {
-        content: '';
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: var(--outline-w, 0px);
-        height: var(--outline-h, 0px);
-        background-color: rgba($color-primary, $op-20);
-        pointer-events: none;
-      }
-
+      &::before,
       &::after {
-        content: '';
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: var(--outline-w, 0px);
-        height: var(--outline-h, 0px);
-        border: 2px solid rgba($color-primary, $op-20);
-        transform-origin: center;
-        animation: cursor-pulse 2s ease-out infinite;
-        pointer-events: none;
+        height: 100%;
+        border-width: 1.5px;
       }
     }
-  }
-}
-
-@keyframes cursor-blink {
-  to { opacity: $op-20; }
-}
-
-@keyframes cursor-pulse {
-  to {
-    transform: translate(-50%, -50%) scale(1.4);
-    opacity: 0;
   }
 }
