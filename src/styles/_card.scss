@@ -1,26 +1,27 @@
 @use 'variables' as *;
+@use 'tokens' as *;
 
 .card {
-  background: $color-secondary;
-  border-radius: $radius-card;
+  background: var(--color-secondary);
+  border-radius: var(--radius-card);
 
   overflow: hidden;
 
   display: flex;
   flex-direction: column;
   width: 100vw;
-  max-width: 64rem;
+  max-width: var(--card-max-width);
 
-  padding-bottom: $sp-lg;
-  gap: $sp-lg;
+  padding-bottom: var(--spacing-lg);
+  gap: var(--spacing-lg);
 
   &--home {
-    height: $card-height-home;
+    height: var(--card-height-home);
   }
 
   &--inner-page {
     border-radius: 0;
-    min-height: 100vh;
+    min-height: var(--card-min-height-inner);
   }
 }
 

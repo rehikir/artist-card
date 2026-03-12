@@ -1,4 +1,4 @@
-import { Category } from '../index.js'
+import { Category } from '../../layout/Category/Category.js'
 
 export function RulesContent() {
   return `

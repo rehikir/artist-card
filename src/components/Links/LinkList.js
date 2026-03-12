@@ -1,4 +1,4 @@
-import { Category } from '../index.js'
+import { CategoryWrapper, CategoryCaption, CategorySection } from '../../layout/Category/Category.js'
 import { Link } from '../../layout/Link/Link.js'
 
 export function renderLink(link) {
@@ -8,9 +8,13 @@ export function renderLink(link) {
 export function LinkList({ category = 'My Works', links = [], inline = false } = {}) {
   if (!Array.isArray(links)) links = []
 
-  return Category({
-    caption: category,
-    inline,
-    children: links.map(renderLink).join('')
+  return CategoryWrapper({
+    children: `
+      ${category ? CategoryCaption({ label: category }) : ''}
+      ${CategorySection({ 
+        children: links.map(renderLink).join(''),
+        inline 
+      })}
+    `
   })
 }

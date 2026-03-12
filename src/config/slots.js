@@ -1,5 +1,3 @@
-// Slot configuration - edit these values to update commission status
-export const slotConfig = {
-  maxSlots: 5,
-  takenSlots: 5
-}
+// Re-export from centralized config
+// To update slot values, edit src/config/index.js
+export { slotConfig } from './index.js'

@@ -1,3 +1,10 @@
+// Design tokens - CSS custom properties
+@use 'tokens';
+
+// Legacy variables (backward compatibility)
+@use 'variables';
+
+// Core styles
 @use 'reset';
 @use 'body';
 @use 'typography';

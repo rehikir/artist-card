@@ -10,3 +10,8 @@ export function Category({ caption = null, children = '', inline = false } = {})
     `
   })
 }
+
+// Re-export sub-components for direct imports
+export { CategoryWrapper } from './CategoryWrapper.js'
+export { CategoryCaption } from './CategoryCaption.js'
+export { CategorySection } from './CategorySection.js'

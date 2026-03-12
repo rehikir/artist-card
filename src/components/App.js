@@ -1,4 +1,4 @@
-import { siteConfig, getPageTitle, getPageSuffix } from '../config/site.js'
+import { siteConfig, getPageSuffix } from '../config/index.js'
 import { getCardClass } from '../constants/classNames.js'
 import { Header } from './Header/Header.js'
 import { Body } from './Body/Body.js'

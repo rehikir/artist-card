@@ -1,4 +1,15 @@
 // ===================================
+// SCSS Variables - Compile-time only
+// ===================================
+// DEPRECATED: These are kept for backward compatibility.
+// NEW CODE should use CSS custom properties directly:
+//   - Use var(--token-name) in your SCSS
+//   - Do NOT use these $variables
+// ===================================
+
+@use 'tokens' as *;
+
+// ===================================
 // BREAKPOINTS
 // ===================================
 
@@ -74,6 +85,7 @@ $card-height-home: 48rem;
 // ===================================
 
 $radius-card: 12px;
+
 
 // ===================================
 // BORDERS

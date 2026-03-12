@@ -1,5 +1,5 @@
-import { Category } from '../index.js'
-import { slotConfig } from '../../config/slots.js'
+import { Category } from '../../layout/Category/Category.js'
+import { slotConfig } from '../../config/index.js'
 
 export function StatusSection() {
   const { maxSlots, takenSlots } = slotConfig
