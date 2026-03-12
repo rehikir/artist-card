@@ -1,8 +1,10 @@
-export function Link({ href = null, target = null, rel = null, iconSrc = null, iconAlt = null, text = '', variant = '' } = {}) {
+export function Link({ href = null, target = null, rel = null, iconSrc = null, iconAlt = null, text = '', variant = '', modifier = '', class: extraClass = '' } = {}) {
   const isDisabled = !href
   const tag = isDisabled ? 'span' : 'a'
-  const variantClass = variant ? `link--${variant}` : ''
-  const classes = `link ${variantClass}${isDisabled ? ' link--disabled' : ''}`
+  const variantClass = variant ? ` link--${variant}` : ''
+  const modifierClass = modifier ? ` link--${modifier}` : ''
+  const extraClassStr = extraClass ? ` ${extraClass}` : ''
+  const classes = `link${variantClass}${modifierClass}${extraClassStr}${isDisabled ? ' link--disabled' : ''}`
   const attributes = isDisabled
     ? `class="${classes}"`
     : `href="${href}" class="${classes}" ${target ? `target="${target}"` : ''} ${rel ? `rel="${rel}"` : ''}`

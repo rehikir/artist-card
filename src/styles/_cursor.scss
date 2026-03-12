@@ -23,6 +23,7 @@
       z-index: $z-cursor;
       transform: translate(-50%, -50%);
       opacity: 0.6;
+      mix-blend-mode: difference;
       @include transition(opacity, $ease-default, $duration-fast);
 
       // CSS custom properties for dynamic sizing
@@ -43,9 +44,9 @@
         transform: translateY(-50%);
         width: $cursor-hit;
         height: 60%;
-        border-left: $border-thin solid $color-primary;
-        border-top: $border-thin solid $color-primary;
-        border-bottom: $border-thin solid $color-primary;
+        border-left: $border-thin solid $color-surface;
+        border-top: $border-thin solid $color-surface;
+        border-bottom: $border-thin solid $color-surface;
         border-top-left-radius: $radius-sm;
         border-bottom-left-radius: $radius-sm;
       }
@@ -57,9 +58,9 @@
         transform: translateY(-50%);
         width: $cursor-hit;
         height: 60%;
-        border-right: $border-thin solid $color-primary;
-        border-top: $border-thin solid $color-primary;
-        border-bottom: $border-thin solid $color-primary;
+        border-right: $border-thin solid $color-surface;
+        border-top: $border-thin solid $color-surface;
+        border-bottom: $border-thin solid $color-surface;
         border-top-right-radius: $radius-sm;
         border-bottom-right-radius: $radius-sm;
       }

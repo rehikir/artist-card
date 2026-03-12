@@ -87,4 +87,32 @@
 .term-note-text {
   font-size: $text-xs;
   opacity: $opacity-60;
+  padding-left: $space-md;
+
+  text-transform: normal;
+}
+
+// Rules page
+.rules-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+}
+
+.rules-subtitle {
+  font-size: $text-h3;
+  line-height: $leading-normal;
+  font-weight: $weight-body;
+}
+
+.rules-items {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: $space-xs;
+  column-gap: $space-md;
+}
+
+.rules-items span {
+  text-transform: lowercase;
 }

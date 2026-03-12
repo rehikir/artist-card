@@ -5,6 +5,7 @@
  */
 
 import { pagesConfig } from '../config/pages.js'
+import { siteConfig } from '../config/index.js'
 
 // ===================================
 // ROUTE CONSTANTS (Auto-derived from pagesConfig)
@@ -121,7 +122,7 @@ export const getPageData = (route) => {
 
   return {
     route,
-    title: `${pagesConfig.home.titleSuffix.split(' ')[0]} — ${pageConfig.titleSuffix}`,
+    title: `${siteConfig.name} — ${pageConfig.titleSuffix}`,
     pageSuffix: pageConfig.titleSuffix,
     isInner,
     path: pageConfig.path

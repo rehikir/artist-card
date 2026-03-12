@@ -5,7 +5,7 @@
  */
 
 import { defineConfig, shape, nonEmptyString, url, arrayOf, withDefault, typeOf } from '../utils/validate.js'
-import { pagesConfig, getNavLinksFromConfig } from './pages.js'
+import { pagesConfig } from './pages.js'
 
 // ===================================
 // SITE CONFIGURATION
@@ -89,7 +89,6 @@ export const navLinks = defineConfig([
   { text: 'FAQ', route: 'faq', disabled: false },
   { text: 'Rules & Terms', route: 'rules', disabled: false },
   { text: 'Prices', route: 'prices', disabled: false },
-  { text: 'Gallery', disabled: true },
   { text: 'Contacts', disabled: true, variant: 'cta' },
 ], arrayOf(navLinkSchema), 'navLinks')
 
@@ -149,15 +148,15 @@ export const getNavLinks = (currentPage = 'home') => {
 }
 
 // ===================================
-// EXPORTS
+// DEFAULT EXPORT
 // ===================================
 
 export default {
   site: siteConfig,
   socialLinks,
-  navLinks: getNavLinks(),  // Default (non-disabled) links
+  navLinks: getNavLinks(),
   slots: slotConfig,
-  pages: pagesConfig,        // Expose pages config
+  pages: pagesConfig,
   getPageSuffix,
   getPageTitle,
   getNavLinks

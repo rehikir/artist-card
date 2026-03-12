@@ -9,8 +9,8 @@
   flex-direction: column;
   width: 100vw;
   max-width: $card-max-width;
-  padding-bottom: $space-lg;
-  gap: $space-lg;
+  padding-bottom: $space-xl;
+  gap: $space-xl;
 
   // Page transition fade
   opacity: 1;
@@ -33,6 +33,8 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+
+  gap: $space-lg;
 }
 
 .card-footer {

@@ -34,6 +34,34 @@
     border: none;
   }
 
+  // Variant: Alt (compact, base font, no extended hit area)
+  &--alt {
+    padding: $space-xs 0;
+    font-size: $text-base;
+    background-color: 0;
+
+    &:hover {
+      background-color: $color-primary;
+      color: $color-secondary;
+    }
+  }
+
+  // Modifier: Inverse (swap colors for dark backgrounds - works with any variant)
+  &--inverse {
+    color: $color-secondary;
+
+    &:hover {
+      background-color: $color-secondary;
+      color: $color-primary;
+    }
+
+    // Active state
+    &.is-active {
+      background-color: rgba($color-secondary, $opacity-60);
+      color: $color-primary;
+    }
+  }
+
   // Variant: Disabled
   &--disabled {
     opacity: $opacity-disabled;
@@ -55,6 +83,10 @@
   inset: -$space-sm (-$space-xl); // Horizontal only
 }
 
+.link--alt::before {
+  inset: 0;
+}
+
 // Icon container
 .link-icon {
   display: flex;
@@ -72,6 +104,35 @@
   }
 
   &--empty {
+    display: none;
+  }
+}
+
+// ===================================
+// VERTICAL NAVIGATION
+// ===================================
+
+.vertical-nav {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: $space-xs;
+
+  padding-right: $space-md;
+
+  // Full-width hit areas for links
+  .link {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  // Hide on mobile
+  @include mobile {
     display: none;
   }
 }
