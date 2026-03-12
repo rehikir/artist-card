@@ -1,17 +1,17 @@
-@use 'variables' as *;
+@use 'tokens' as *;
 
 .category-wrapper {
   display: flex;
   flex-direction: column;
-  gap: $sp-md;
+  gap: $space-md;
 }
 
 .category-section {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: $sp-sm;
-  padding-left: $sp-xl;
+  gap: $space-sm;
+  padding-left: $space-xl;
 
   &--inline {
     flex-direction: row;
@@ -22,13 +22,13 @@
 .category-caption {
   display: flex;
   align-items: center;
-  text-transform: $none;
+  text-transform: $transform-none;
 
   img {
-    width: 2rem;
+    width: $space-xl;
   }
 }
 
 .category-caption-label {
-  font-size: $fs-p1;
+  font-size: $text-base;
 }

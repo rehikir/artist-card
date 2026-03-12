@@ -1,42 +1,49 @@
-@use 'variables' as *;
+@use 'tokens' as *;
 
-@media (max-width: $mobile-breakpoint) {
-  // Change body background to card color
+// ===================================
+// MOBILE RESPONSIVE
+// ===================================
+
+@include mobile {
+  // Reduce base font size
   html {
     font-size: 12px;
   }
+
+  // Body becomes full-width
   body {
-    background-color: $color-secondary;
+    background-color: $color-surface;
     align-items: normal;
   }
 
-  // Card becomes full width and transparent
+  // Card becomes full-width and transparent
   .card {
     border-radius: 0;
     background: transparent;
-
-    gap: $sp-2xl;
+    gap: $space-2xl;
   }
 
-  // Remove fixed height on mobile to allow content to fit
+  // Remove fixed height on mobile
   .card--home {
     height: auto;
     min-height: 100vh;
   }
 
+  // Category section - stack vertically
   .category-section {
     &--inline {
       flex-direction: column;
 
-      // Switch hit area to horizontal for column layout
+      // Switch hit area to vertical only
       .link::before {
-        inset: 0 (-$sp-md);
+        inset: 0 (-$space-md);
       }
     }
   }
 
+  // Status text smaller on mobile
   .status {
     flex-direction: column;
-    font-size: $fs-h3;
+    font-size: $text-h3;
   }
 }

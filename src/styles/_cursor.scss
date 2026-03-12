@@ -1,71 +1,80 @@
-@use 'variables' as *;
+@use 'tokens' as *;
 
-// Bracket cursor - follows native cursor 1:1
+// ===================================
+// CUSTOM CURSOR
+// ===================================
+// Only visible on desktop with fine pointer
+// ===================================
+
 .cursor {
   display: none;
 }
 
-@media (min-width: 48rem) and (pointer: fine) {
-  .cursor {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 24px;
-    height: 24px;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    opacity: 0.6;
-    transition: opacity 0.15s ease;
-    --bracket-x: 12px;
-    --bracket-y: 12px;
-
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      pointer-events: none;
-    }
-
-    // Left bracket [
-    &::before {
+@include desktop {
+  @media (pointer: fine) {
+    .cursor {
+      display: block;
+      position: fixed;
+      top: 0;
       left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 8px;
-      height: 60%;
-      border-left: 1px solid $color-primary;
-      border-top: 1px solid $color-primary;
-      border-bottom: 1px solid $color-primary;
-      border-top-left-radius: 1px;
-      border-bottom-left-radius: 1px;
-    }
+      width: $cursor-size;
+      height: $cursor-size;
+      pointer-events: none;
+      z-index: $z-cursor;
+      transform: translate(-50%, -50%);
+      opacity: 0.6;
+      @include transition(opacity, $ease-default, $duration-fast);
 
-    // Right bracket ]
-    &::after {
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 8px;
-      height: 60%;
-      border-right: 1px solid $color-primary;
-      border-top: 1px solid $color-primary;
-      border-bottom: 1px solid $color-primary;
-      border-top-right-radius: 1px;
-      border-bottom-right-radius: 1px;
-    }
-
-    &--active {
-      opacity: 1;
-      width: calc(var(--bracket-x) * 2);
-      height: calc(var(--bracket-y) * 2);
-      transition: none;
+      // CSS custom properties for dynamic sizing
+      --bracket-x: 12px;
+      --bracket-y: 12px;
 
       &::before,
       &::after {
-        height: 100%;
-        border-width: 1.5px;
+        content: '';
+        position: absolute;
+        pointer-events: none;
+      }
+
+      // Left bracket [
+      &::before {
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: $cursor-hit;
+        height: 60%;
+        border-left: $border-thin solid $color-primary;
+        border-top: $border-thin solid $color-primary;
+        border-bottom: $border-thin solid $color-primary;
+        border-top-left-radius: $radius-sm;
+        border-bottom-left-radius: $radius-sm;
+      }
+
+      // Right bracket ]
+      &::after {
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: $cursor-hit;
+        height: 60%;
+        border-right: $border-thin solid $color-primary;
+        border-top: $border-thin solid $color-primary;
+        border-bottom: $border-thin solid $color-primary;
+        border-top-right-radius: $radius-sm;
+        border-bottom-right-radius: $radius-sm;
+      }
+
+      // Active state - snapping to interactive element
+      &--active {
+        opacity: 1;
+        width: calc(var(--bracket-x) * 2);
+        height: calc(var(--bracket-y) * 2);
+
+        &::before,
+        &::after {
+          height: 100%;
+          border-width: $border-thin;
+        }
       }
     }
   }

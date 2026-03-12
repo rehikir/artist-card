@@ -1,105 +1,38 @@
 // ===================================
-// SCSS Variables - Compile-time only
+// DEPRECATED - Backward Compatibility
 // ===================================
-// DEPRECATED: These are kept for backward compatibility.
-// NEW CODE should use CSS custom properties directly:
-//   - Use var(--token-name) in your SCSS
-//   - Do NOT use these $variables
+// Use tokens.scss directly instead
 // ===================================
 
 @use 'tokens' as *;
 
-// ===================================
-// BREAKPOINTS
-// ===================================
-
-$mobile-breakpoint: 72rem;
-
-
-// ===================================
-// COLOR PALETTE
-// ===================================
-
-$color-primary: #1a1a1a;
-$color-secondary: #ebebeb;
-
-
-// ===================================
-// TYPOGRAPHY
-// ===================================
-
-// Font families
-$font-main: 'Martian Mono', monospace;
-
-// Font sizes
-$fs-xs: 0.75rem;
-$fs-p1: 1rem;
-$fs-h3: 1.75rem;
-$fs-h1: 4.1875rem;
-
-// Font weights
-$fw-base: 200;
-
-// Line heights
-$lh-none: 1;
-$lh-normal: 1.5;
-$lh-loose: 2;
-
-// Letter spacing
-$tight: -10%;
-
-// Text transform
-$tt-up: uppercase;
-$tt-lw: lowercase;
-$none: none;
-
-
-// ===================================
-// SPACING
-// ===================================
-
-$sp-0: 0;
-$sp-xs: 0.25rem;
-$sp-sm: 0.5rem;
-$sp-md: 1rem;
-$sp-lg: 1.5rem;
-$sp-xl: 2rem;
-$sp-2xl: 3rem;
-$sp-3xl: 4rem;
-
-
-// ===================================
-// SIZING
-// ===================================
-
-// Icon sizes
-$icon-size-base: 1rem;
-$icon-size-wrapper: 2rem;
-
-// Card sizes
-$card-height-home: 48rem;
-
-
-// ===================================
-// BORDER RADIUS
-// ===================================
-
-$radius-card: 12px;
-
-
-// ===================================
-// BORDERS
-// ===================================
-
-$border-thin: 1px;
-
-
-// ===================================
-// OPACITY
-// ===================================
-
-$op-20: 0.2;
-$op-60: 0.6;
-
-// Component opacity
-$op-disabled: $op-20;
+// Legacy aliases (will be removed)
+$mobile-breakpoint: $bp-mobile;
+$font-main: $font-body;
+$fw-base: $weight-body;
+$fs-xs: $text-xs;
+$fs-p1: $text-base;
+$fs-h3: $text-h3;
+$fs-h1: $text-h1;
+$lh-none: $leading-none;
+$lh-normal: $leading-normal;
+$lh-loose: $leading-loose;
+$tight: $tracking-tight;
+$tt-up: $transform-upper;
+$tt-lw: $transform-lower;
+$sp-0: $space-0;
+$sp-xs: $space-xs;
+$sp-sm: $space-sm;
+$sp-md: $space-md;
+$sp-lg: $space-lg;
+$sp-xl: $space-xl;
+$sp-2xl: $space-2xl;
+$sp-3xl: $space-3xl;
+$icon-size-base: $icon-sm;
+$icon-size-wrapper: $icon-xl;
+$card-height-home: $card-height;
+$radius-card: $radius-card;
+$border-thin: $border-thin;
+$op-20: $opacity-20;
+$op-60: $opacity-60;
+$op-disabled: $opacity-disabled;

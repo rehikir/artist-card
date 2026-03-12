@@ -1,30 +1,27 @@
-@use 'variables' as *;
 @use 'tokens' as *;
 
 .card {
-  background: var(--color-secondary);
-  border-radius: var(--radius-card);
-
+  background: $color-surface;
+  border-radius: $radius-card;
   overflow: hidden;
 
   display: flex;
   flex-direction: column;
   width: 100vw;
-  max-width: var(--card-max-width);
-
-  padding-bottom: var(--spacing-lg);
-  gap: var(--spacing-lg);
+  max-width: $card-max-width;
+  padding-bottom: $space-lg;
+  gap: $space-lg;
 
   // Page transition fade
   opacity: 1;
 
   &--home {
-    height: var(--card-height-home);
+    height: $card-height;
   }
 
   &--inner-page {
     border-radius: 0;
-    min-height: var(--card-min-height-inner);
+    min-height: $card-min-height;
   }
 }
 

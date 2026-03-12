@@ -1,7 +1,104 @@
-@use 'variables' as *;
+@use 'tokens' as *;
 
-.non-select {
-  -webkit-user-select: none;
+// ===================================
+// BEHAVIOR UTILITIES
+// ===================================
+
+.user-select-none {
   user-select: none;
   -webkit-user-drag: none;
+}
+
+.user-select-auto {
+  user-select: auto;
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
+.pointer-events-auto {
+  pointer-events: auto;
+}
+
+// ===================================
+// VISIBILITY UTILITIES
+// ===================================
+
+.visible {
+  visibility: visible;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+// ===================================
+// TEXT UTILITIES
+// ===================================
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }
+
+// Truncation
+.truncate {
+  @include truncate(1);
+}
+
+.truncate-2 {
+  @include truncate(2);
+}
+
+.truncate-3 {
+  @include truncate(3);
+}
+
+// ===================================
+// LAYOUT UTILITIES
+// ===================================
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-row { flex-direction: row; }
+.flex-wrap { flex-wrap: wrap; }
+
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+
+.justify-center { justify-content: center; }
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+.justify-between { justify-content: space-between; }
+
+.gap-xs { gap: $space-xs; }
+.gap-sm { gap: $space-sm; }
+.gap-md { gap: $space-md; }
+.gap-lg { gap: $space-lg; }
+.gap-xl { gap: $space-xl; }
+
+// ===================================
+// SPACING UTILITIES
+// ===================================
+
+.p-0 { padding: $space-0; }
+.p-1 { padding: $space-1; }
+.p-2 { padding: $space-2; }
+.p-3 { padding: $space-3; }
+.p-4 { padding: $space-4; }
+
+.m-0 { margin: $space-0; }
+.m-1 { margin: $space-1; }
+.m-2 { margin: $space-2; }
+.m-3 { margin: $space-3; }
+.m-4 { margin: $space-4; }
+
+// ===================================
+// ACCESSIBILITY
+// ===================================
+
+.visually-hidden {
+  @include visually-hidden;
 }

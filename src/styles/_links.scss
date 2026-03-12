@@ -1,4 +1,4 @@
-@use 'variables' as *;
+@use 'tokens' as *;
 
 .link {
   position: relative;
@@ -7,40 +7,36 @@
 
   display: flex;
   align-items: center;
-  padding: 0 $sp-xl $sp-sm $sp-sm;
-  gap: $sp-sm;
+  padding: 0 $space-xl $space-sm $space-sm;
+  gap: $space-sm;
 
-  font-size: $fs-h3;
+  font-size: $text-h3;
+  @include border-alpha($color-primary, 0.2);
+  border-width: 0 0 $border-thin $border-thin;
 
-  border: solid rgba($color-primary, $op-20);
-  border-width: 0 0 1px 1px;
-
-  // Extended hit area for easier clicking and future animations
-  &::before {
-    content: '';
-    position: absolute;
-    inset: -$sp-xl;
-  }
+  // Extended hit area
+  @include hit-area($space-xl);
 
   &:hover {
     background-color: $color-primary;
-    color: rgba($color-secondary, $op-60);
+    color: rgba($color-secondary, $opacity-60);
   }
 
-  // Allow text to wrap on small screens
   .link-text {
     word-break: break-word;
     hyphens: auto;
   }
 
+  // Variant: CTA
   &--cta {
     background-color: $color-primary;
     color: $color-secondary;
     border: none;
   }
 
+  // Variant: Disabled
   &--disabled {
-    opacity: $op-disabled;
+    opacity: $opacity-disabled;
     pointer-events: none;
 
     &:hover {
@@ -50,26 +46,27 @@
   }
 }
 
-// Directional hit areas based on layout context
+// Hit area modifiers based on layout context
 .category-section--inline .link::before {
-  inset: -$sp-xl 0;  // vertical only for inline links
+  inset: -$space-xl 0; // Vertical only
 }
 
 .category-section:not(.category-section--inline) .link::before {
-  inset: -$sp-sm (-$sp-xl);  // horizontal only for column links
+  inset: -$space-sm (-$space-xl); // Horizontal only
 }
 
+// Icon container
 .link-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: $icon-size-wrapper;
-  height: $icon-size-wrapper;
+  width: $icon-xl;
+  height: $icon-xl;
   flex-shrink: 0;
   background-color: $color-primary;
 
   img {
-    width: $icon-size-base;
+    width: $icon-sm;
     height: auto;
     object-fit: contain;
   }

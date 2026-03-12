@@ -1,89 +1,64 @@
-@use 'variables' as *;
+@use 'tokens' as *;
 
 // ===================================
 // BASE TYPOGRAPHY
 // ===================================
 
 body {
-  font-family: $font-main;
-  font-weight: $fw-base;
-  font-size: $fs-p1;
-  line-height: $lh-none;
-  color: $color-primary;
-  letter-spacing: $tight;
-  text-transform: $tt-up;
+  font-family: $font-body;
+  font-weight: $weight-body;
+  font-size: $text-base;
+  line-height: $leading-none;
+  color: $color-text;
+  letter-spacing: $tracking-tight;
+  text-transform: $transform-upper;
 }
 
 a {
-  text-decoration: $none;
-  color: $color-primary;
+  text-decoration: none;
+  color: $color-text;
 }
 
 // ===================================
 // FONT SIZE UTILITIES
 // ===================================
 
-.text-xs {
-  font-size: $fs-xs;
-}
-
-.text-p1 {
-  font-size: $fs-p1;
-}
-
-.text-h3 {
-  font-size: $fs-h3;
-}
-
-.text-h1 {
-  font-size: $fs-h1;
-}
-
+.text-xs { font-size: $text-xs; }
+.text-sm { font-size: $text-sm; }
+.text-base { font-size: $text-base; }
+.text-lg { font-size: $text-lg; }
+.text-h3 { font-size: $text-h3; }
+.text-h1 { font-size: $text-h1; }
 
 // ===================================
 // FONT WEIGHT UTILITIES
 // ===================================
 
-.font-base {
-  font-weight: $fw-base;
-}
+.font-light { font-weight: $weight-light; }
+.font-normal { font-weight: $weight-normal; }
+.font-bold { font-weight: $weight-bold; }
 
 // ===================================
 // LINE HEIGHT UTILITIES
 // ===================================
 
-.leading-none {
-  line-height: $lh-none;
-}
-
-.leading-normal {
-  line-height: $lh-normal;
-}
-
-.leading-loose {
-  line-height: $lh-loose;
-}
+.leading-none { line-height: $leading-none; }
+.leading-tight { line-height: $leading-tight; }
+.leading-normal { line-height: $leading-normal; }
+.leading-loose { line-height: $leading-loose; }
 
 // ===================================
 // LETTER SPACING UTILITIES
 // ===================================
 
-.tracking-tight {
-  letter-spacing: $tight;
-}
-
-.tracking-normal {
-  letter-spacing: normal;
-}
+.tracking-tight { letter-spacing: $tracking-tight; }
+.tracking-normal { letter-spacing: $tracking-normal; }
+.tracking-wide { letter-spacing: $tracking-wide; }
 
 // ===================================
 // TEXT TRANSFORM UTILITIES
 // ===================================
 
-.tt-none {
-  text-transform: $none;
-}
-
-.lowercase {
-  text-transform: $tt-lw;
-}
+.tt-none { text-transform: $transform-none; }
+.tt-upper { text-transform: $transform-upper; }
+.tt-lower { text-transform: $transform-lower; }

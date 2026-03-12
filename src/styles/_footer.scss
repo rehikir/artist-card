@@ -1,12 +1,13 @@
-@use 'variables' as *;
+@use 'tokens' as *;
 
 .card-footer {
   display: flex;
   flex-direction: column;
-  gap: $sp-md;
+  gap: $space-md;
+
   &--inner-page {
     .status {
-      font-size: $fs-h3;
+      font-size: $text-h3;
 
       .status-intro {
         display: none;
@@ -17,7 +18,6 @@
 
 .status {
   display: flex;
-  gap: $sp-xs;
-
-  font-size: $fs-h1;
+  gap: $space-xs;
+  font-size: $text-h1;
 }

@@ -1,19 +1,17 @@
-@use 'variables' as *;
+@use 'tokens' as *;
 
 .card-header {
   display: flex;
   flex-direction: column;
-  gap: $sp-xl;
-
-  font-size: $fs-h1;
+  gap: $space-xl;
+  font-size: $text-h1;
 }
 
 .branding-wrapper {
   position: relative;
   display: flex;
   flex-direction: column;
-
-  text-transform: $none;
+  text-transform: $transform-none;
 }
 
 .branding-name {
@@ -23,45 +21,50 @@
   line-height: 1;
 
   span {
-    background-color: $color-secondary;
+    background-color: $color-surface;
   }
 }
 
 .branding-page-title {
   display: inline-block;
-  padding-right: $sp-2xl;
+  padding-right: $space-2xl;
   word-break: break-word;
-  background-color: $color-secondary;
+  background-color: $color-surface;
 }
 
-.logo-link:hover .branding-name span,
-.logo-link:hover .branding-page-title {
-  background-color: $color-primary;
-  color: $color-secondary;
+// Hover effect - invert colors
+.logo-link:hover {
+  .branding-name span,
+  .branding-page-title {
+    background-color: $color-primary;
+    color: $color-surface;
+  }
 }
 
+// Logo
 .branding-logo {
-  height: $fs-h1;
+  height: $text-h1;
   width: auto;
-  transition: transform 0.2s var(--transition-timing-snappy);
+  @include transition(transform);
 
   &--page {
     position: absolute;
-    top: $fs-h1;
-    right: 2rem;
+    top: $text-h1;
+    right: $space-xl;
     transform-origin: center center;
   }
 }
 
+// Logo hover - shrink to 75%
 .logo-link:hover .branding-logo--page {
   transform: scale(0.75);
 }
 
-// Category wrapper in header - constrain width and allow wrapping
+// Category wrapper in header
 .card-header .category-wrapper {
   display: flex;
   flex-direction: column;
-  gap: $sp-md;
+  gap: $space-md;
   max-width: 100%;
   overflow-wrap: break-word;
 }

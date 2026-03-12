@@ -8,11 +8,6 @@ import { gsap } from 'gsap'
 const HIT_AREA = 8
 const SNAP_DURATION = 0.2
 const FOLLOW_DURATION = 0.05
-const DEBUG = true
-
-function log(...args) {
-  if (DEBUG) console.log('[Cursor]', ...args)
-}
 
 let element = null
 let target = null
@@ -42,7 +37,7 @@ function snapToTarget(t) {
     '--bracket-x': `${halfW}px`,
     '--bracket-y': `${halfH}px`,
     duration: SNAP_DURATION,
-    ease: 'power2.out',
+    ease: 'power1.out',
     overwrite: true
   })
 }
@@ -62,14 +57,13 @@ function returnToFollow() {
 function onMouseMove(e) {
   mouse.x = e.clientX
   mouse.y = e.clientY
-  log('mousemove', { x: mouse.x, y: mouse.y })
 
   if (!target && enabled) {
     gsap.to(element, {
       x: mouse.x,
       y: mouse.y,
       duration: FOLLOW_DURATION,
-      ease: 'none',
+      ease: 'power1.out',
       overwrite: 'auto'
     })
   }
@@ -77,10 +71,7 @@ function onMouseMove(e) {
 
 function onHover(e) {
   const isEnter = e.type === 'mouseenter'
-  log('hover', { type: e.type, target: isEnter ? e.target?.tagName : null })
-  
   target = isEnter ? findTarget(e.target) : null
-  log('target set:', target ? target.tagName : null)
 
   if (element) {
     element.classList.toggle('cursor--active', !!target)
@@ -116,16 +107,12 @@ function detachListeners() {
 }
 
 export function init() {
-  log('init() called')
   element = document.querySelector('.cursor')
-  log('element found:', !!element)
   if (!element) return
 
   enabled = shouldEnable()
-  log('enabled:', enabled)
   if (!enabled) return
 
-  log('gsap.set with mouse pos:', mouse)
   gsap.set(element, {
     x: mouse.x,
     y: mouse.y,
@@ -135,19 +122,15 @@ export function init() {
 
   attachListeners()
   update()
-  log('init() complete')
 }
 
 export function destroy() {
-  log('destroy() called')
   if (rafId) {
     cancelAnimationFrame(rafId)
     rafId = null
-    log('RAF cancelled')
   }
 
   detachListeners()
-  log('listeners detached')
 
   if (element) {
     element.classList.remove('cursor--active')
@@ -155,7 +138,6 @@ export function destroy() {
 
   target = null
   enabled = false
-  log('destroy() complete')
 }
 
 export default { init, destroy }

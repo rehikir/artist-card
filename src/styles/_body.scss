@@ -1,15 +1,15 @@
-@use 'variables' as *;
+@use 'tokens' as *;
 
-/* Prevent font size inflation */
+// Prevent font size inflation
 html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
 }
 
-/* Set core body defaults */
+// Core body defaults
 body {
-  background-color: $color-primary;
+  background-color: $color-bg;
   min-width: 100vw;
   min-height: 100dvh;
 
