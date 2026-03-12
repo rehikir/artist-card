@@ -58,7 +58,6 @@
 }
 
 .price-amount {
-  font-weight: $weight-body;
   min-width: 3.75em;
   text-align: right;
 }
@@ -66,13 +65,11 @@
 .terms-list {
   display: flex;
   flex-direction: column;
-  gap: $space-md;
 }
 
 .term-entry {
   display: flex;
   flex-direction: column;
-  gap: $space-xs;
 }
 
 .term-main-text {
@@ -85,18 +82,17 @@
 }
 
 .term-note-text {
-  font-size: $text-xs;
+  font-size: $text-base;
   opacity: $opacity-60;
   padding-left: $space-md;
 
-  text-transform: normal;
+  text-transform: none;
 }
 
 // Rules page
 .rules-list {
   display: flex;
   flex-direction: column;
-  gap: $space-md;
 }
 
 .rules-subtitle {

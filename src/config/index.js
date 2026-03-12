@@ -103,7 +103,7 @@ const slotSchema = shape({
 
 export const slotConfig = defineConfig({
   maxSlots: 5,
-  takenSlots: 3
+  takenSlots: 5
 }, slotSchema, 'slots')
 
 // ===================================

@@ -18,21 +18,6 @@ export const pagesConfig = {
     titleSuffix: 'Commissions',
     component: HomeContent
   },
-  lorem: {
-    path: 'lorem.html',
-    titleSuffix: 'lorem',
-    component: ''
-  },
-  lorem1: {
-    path: 'lorem1.html',
-    titleSuffix: 'lorem1',
-    component: ''
-  },
-  lorem2: {
-    path: 'lorem2.html',
-    titleSuffix: 'lorem2',
-    component: ''
-  },
   faq: {
     path: 'faq.html',
     titleSuffix: 'FAQ',
