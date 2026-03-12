@@ -15,6 +15,9 @@
   padding-bottom: var(--spacing-lg);
   gap: var(--spacing-lg);
 
+  // Page transition fade
+  opacity: 1;
+
   &--home {
     height: var(--card-height-home);
   }

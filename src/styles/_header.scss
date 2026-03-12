@@ -29,7 +29,7 @@
 
 .branding-page-title {
   display: inline-block;
-  padding-right: $sp-3xl;
+  padding-right: $sp-2xl;
   word-break: break-word;
   background-color: $color-secondary;
 }
@@ -43,17 +43,18 @@
 .branding-logo {
   height: $fs-h1;
   width: auto;
+  transition: transform 0.2s var(--transition-timing-snappy);
 
   &--page {
     position: absolute;
     top: $fs-h1;
-    right: $sp-xl;
-    margin-top: $sp-xs;
+    right: 2rem;
+    transform-origin: center center;
   }
 }
 
 .logo-link:hover .branding-logo--page {
-  opacity: 0;
+  transform: scale(0.75);
 }
 
 // Category wrapper in header - constrain width and allow wrapping

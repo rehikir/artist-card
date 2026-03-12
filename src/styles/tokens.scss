@@ -141,15 +141,16 @@
   // ===================================
   
   --transition-duration-fast: 150ms;
-  --transition-duration-base: 300ms;
+  --transition-duration-base: 200ms;
   --transition-duration-slow: 500ms;
   
   --transition-timing-default: ease;
   --transition-timing-smooth: ease-in-out;
-  --transition-timing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-timing-snappy: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-timing-bouncy: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   
   --transition-fast: var(--transition-duration-fast) var(--transition-timing-default);
-  --transition-base: var(--transition-duration-base) var(--transition-timing-default);
+  --transition-base: var(--transition-duration-base) var(--transition-timing-snappy);
   --transition-slow: var(--transition-duration-slow) var(--transition-timing-smooth);
 
   // ===================================
