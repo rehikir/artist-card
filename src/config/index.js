@@ -5,6 +5,7 @@
  */
 
 import { defineConfig, shape, nonEmptyString, url, arrayOf, withDefault, typeOf } from '../utils/validate.js'
+import { pagesConfig, getNavLinksFromConfig } from './pages.js'
 
 // ===================================
 // SITE CONFIGURATION
@@ -13,24 +14,6 @@ import { defineConfig, shape, nonEmptyString, url, arrayOf, withDefault, typeOf 
 const siteSchema = shape({
   name: nonEmptyString(),
   tagline: nonEmptyString(),
-  pages: shape({
-    home: shape({
-      path: nonEmptyString(),
-      titleSuffix: nonEmptyString()
-    }),
-    rules: shape({
-      path: nonEmptyString(),
-      titleSuffix: nonEmptyString()
-    }),
-    prices: shape({
-      path: nonEmptyString(),
-      titleSuffix: nonEmptyString()
-    }),
-    faq: shape({
-      path: nonEmptyString(),
-      titleSuffix: nonEmptyString()
-    })
-  }),
   images: shape({
     logo: nonEmptyString(),
     kir: nonEmptyString(),
@@ -41,13 +24,6 @@ const siteSchema = shape({
 export const siteConfig = defineConfig({
   name: 'rehikir',
   tagline: 'Commissions',
-
-  pages: {
-    home: { path: 'index.html', titleSuffix: 'Commissions' },
-    rules: { path: 'rules.html', titleSuffix: 'Rules & Terms' },
-    prices: { path: 'prices.html', titleSuffix: 'Prices' },
-    faq: { path: 'faq.html', titleSuffix: 'FAQ' }
-  },
 
   images: {
     logo: './images/logo.svg',
@@ -97,7 +73,7 @@ export const socialLinks = defineConfig([
 ], arrayOf(socialLinkSchema), 'socialLinks')
 
 // ===================================
-// NAVIGATION LINKS CONFIGURATION
+// NAVIGATION LINKS CONFIGURATION (Header)
 // ===================================
 
 const navLinkSchema = shape({
@@ -108,11 +84,13 @@ const navLinkSchema = shape({
   variant: withDefault(typeOf('string'), 'default')
 })
 
+// Manually curated header nav links (your control)
 export const navLinks = defineConfig([
   { text: 'FAQ', route: 'faq', disabled: false },
   { text: 'Rules & Terms', route: 'rules', disabled: false },
   { text: 'Prices', route: 'prices', disabled: false },
-  { text: 'Contacts', disabled: true, variant: 'cta' }
+  { text: 'Gallery', disabled: true },
+  { text: 'Contacts', disabled: true, variant: 'cta' },
 ], arrayOf(navLinkSchema), 'navLinks')
 
 // ===================================
@@ -139,7 +117,7 @@ export const slotConfig = defineConfig({
  * @returns {string} Page title suffix
  */
 export const getPageSuffix = (pageKey) => {
-  const page = siteConfig.pages[pageKey] || siteConfig.pages.home
+  const page = pagesConfig[pageKey] || pagesConfig.home
   return page.titleSuffix
 }
 
@@ -153,7 +131,7 @@ export const getPageTitle = (pageKey) => {
 }
 
 /**
- * Get navigation links with current page state
+ * Get navigation links with current page state (header nav)
  * @param {string} currentPage - Current page key
  * @returns {Array} Updated navigation links
  */
@@ -162,7 +140,7 @@ export const getNavLinks = (currentPage = 'home') => {
     if (link.route) {
       return {
         ...link,
-        href: `#/${siteConfig.pages[link.route].path}`,
+        href: `#/${pagesConfig[link.route].path}`,
         disabled: currentPage === link.route
       }
     }
@@ -177,8 +155,9 @@ export const getNavLinks = (currentPage = 'home') => {
 export default {
   site: siteConfig,
   socialLinks,
-  navLinks,
+  navLinks: getNavLinks(),  // Default (non-disabled) links
   slots: slotConfig,
+  pages: pagesConfig,        // Expose pages config
   getPageSuffix,
   getPageTitle,
   getNavLinks

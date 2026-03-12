@@ -4,31 +4,36 @@
  * with guards, transitions, and proper 404 handling
  */
 
-import { siteConfig, getPageTitle } from '../config/index.js'
+import { pagesConfig } from '../config/pages.js'
 
 // ===================================
-// ROUTE CONSTANTS
+// ROUTE CONSTANTS (Auto-derived from pagesConfig)
 // ===================================
 
-export const ROUTES = {
-  HOME: 'home',
-  RULES: 'rules',
-  PRICES: 'prices',
-  FAQ: 'faq',
-  NOT_FOUND: 'notFound'
-}
+export const ROUTES = Object.fromEntries(
+  Object.keys(pagesConfig).map(k => [k.toUpperCase(), k])
+)
 
-export const ROUTE_PATTERNS = {
-  [ROUTES.RULES]: 'rules',
-  [ROUTES.PRICES]: 'prices',
-  [ROUTES.FAQ]: 'faq'
-}
+export const ROUTE_PATTERNS = Object.fromEntries(
+  Object.entries(pagesConfig)
+    .filter(([k, c]) => k !== 'home' && k !== 'notFound')
+    .map(([k, c]) => [k, c.path])
+)
 
 // Reverse mapping: pattern -> route
-const PATTERN_TO_ROUTE = Object.entries(ROUTE_PATTERNS).reduce(
-  (acc, [route, pattern]) => {
-    acc[pattern] = route
-    acc[`${pattern}.html`] = route
+const PATTERN_TO_ROUTE = Object.entries(pagesConfig).reduce(
+  (acc, [route, config]) => {
+    if (route === 'home') {
+      acc['index.html'] = route
+      acc[''] = route
+      return acc
+    }
+    if (route === 'notFound') {
+      acc[config.path] = route
+      return acc
+    }
+    acc[config.path] = route
+    acc[config.path.replace('.html', '')] = route
     return acc
   },
   {}
@@ -84,9 +89,8 @@ export const isInnerPage = (route) => route !== ROUTES.HOME
  * @returns {string} Page path
  */
 export const getPagePath = (route) => {
-  if (route === ROUTES.HOME) return 'index.html'
-  if (route === ROUTES.NOT_FOUND) return 'index.html'
-  return siteConfig.pages[route]?.path || 'index.html'
+  if (route === ROUTES.NOT_FOUND) return pagesConfig.notFound.path
+  return pagesConfig[route]?.path || pagesConfig.home.path
 }
 
 /**
@@ -113,11 +117,11 @@ export const navigate = (route, { replace = false } = {}) => {
  */
 export const getPageData = (route) => {
   const isInner = isInnerPage(route)
-  const pageConfig = siteConfig.pages[route] || siteConfig.pages.home
+  const pageConfig = pagesConfig[route] || pagesConfig.home
 
   return {
     route,
-    title: getPageTitle(route),
+    title: `${pagesConfig.home.titleSuffix.split(' ')[0]} — ${pageConfig.titleSuffix}`,
     pageSuffix: pageConfig.titleSuffix,
     isInner,
     path: pageConfig.path

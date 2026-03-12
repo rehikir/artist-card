@@ -1,13 +1,12 @@
 import { getSectionClass } from '../../constants/classNames.js'
-import { FaqContent } from './FaqContent.js'
-import { RulesContent } from './RulesContent.js'
-import { PricesContent } from './PricesContent.js'
+import { pagesConfig } from '../../config/pages.js'
 
-const pageContent = {
-  faq: FaqContent,
-  rules: RulesContent,
-  prices: PricesContent
-}
+// Build page content map from config (only pages with components)
+const pageContent = Object.fromEntries(
+  Object.entries(pagesConfig)
+    .filter(([key, config]) => config.component !== null)
+    .map(([key, config]) => [key, config.component])
+)
 
 export function Body({ inner = false, page = 'home' } = {}) {
   const className = getSectionClass('card-body', inner)
