@@ -14,6 +14,23 @@ let target = null
 let mouse = { x: 0, y: 0 }
 let rafId = null
 let enabled = false
+let interactives = []  // Cached interactive elements
+let interactiveRects = []  // Cached bounding rects
+
+/**
+ * Cache interactive elements and their positions
+ * Call this when DOM changes
+ */
+function cacheInteractives() {
+  interactives = Array.from(document.querySelectorAll('a, button, .link, [role="button"]'))
+  interactiveRects = interactives.map(el => {
+    const rect = el.getBoundingClientRect()
+    return {
+      centerX: rect.left + rect.width / 2,
+      centerY: rect.top + rect.height / 2
+    }
+  })
+}
 
 function shouldEnable() {
   return window.matchMedia('(min-width: 768px)').matches &&
@@ -22,7 +39,16 @@ function shouldEnable() {
 
 function findTarget(el) {
   if (!el) return null
-  if (el.matches('a, button, .link, [role="button"]')) return el
+  
+  // Check if element is in our cached interactive list
+  const index = interactives.indexOf(el)
+  if (index !== -1) return el
+  
+  // Fallback for dynamically added elements
+  if (el.matches('a, button, .link, [role="button"]')) {
+    cacheInteractives()  // Update cache
+    return el
+  }
   return null
 }
 
@@ -113,6 +139,9 @@ export function init() {
   enabled = shouldEnable()
   if (!enabled) return
 
+  // Cache interactive elements for fast lookup
+  cacheInteractives()
+
   gsap.set(element, {
     x: mouse.x,
     y: mouse.y,
@@ -140,4 +169,5 @@ export function destroy() {
   enabled = false
 }
 
+export { cacheInteractives }
 export default { init, destroy }

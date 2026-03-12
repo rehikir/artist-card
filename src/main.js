@@ -2,7 +2,7 @@ import './styles/main.scss'
 import { createApp } from './components/App.js'
 import { getBodyClass } from './constants/classNames.js'
 import { initRouter, isInnerPage, getPageData } from './router/index.js'
-import { init as initCursor, destroy as destroyCursor } from './utils/cursor.js'
+import { init as initCursor, destroy as destroyCursor, cacheInteractives } from './utils/cursor.js'
 import { crossfade } from './utils/animations.js'
 
 // Transition state - prevent navigation during transition
@@ -38,6 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Re-render app content
         app.innerHTML = createApp({ page, isInner })
+
+        // Re-cache interactive elements after DOM update
+        cacheInteractives()
 
         // Reinitialize cursor after DOM update
         initCursor()

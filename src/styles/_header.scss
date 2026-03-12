@@ -37,7 +37,7 @@
   .branding-name span,
   .branding-page-title {
     background-color: $color-primary;
-    color: $color-surface;
+    color: rgba($color-secondary, $opacity-60);
   }
 }
 
