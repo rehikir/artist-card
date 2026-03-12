@@ -1,0 +1,33 @@
+@use 'tokens' as *;
+
+// ===================================
+// CONSTRUCTION BANNER
+// ===================================
+
+.construction-banner {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  padding: $space-xs;
+  gap: $space-xs;
+
+  background-color: $color-bg;
+
+  z-index: $z-modal;
+
+  p {
+    font-size: $text-sm;
+    color: $color-warning;
+    margin: 0;
+  }
+
+  // Hide on mobile
+  @include mobile {
+    display: none;
+  }
+}
