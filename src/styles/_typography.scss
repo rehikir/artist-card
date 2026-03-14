@@ -32,11 +32,18 @@ h3 {
 
 p {
   font-size: $text-base;
+  letter-spacing: $tracking-normal;
+  line-height: $leading-normal;
+  padding-right: $space-3xl;
 }
 
 a {
   text-decoration: none;
   color: $color-text;
+
+  &.link--alt {
+    letter-spacing: $tracking-normal;
+  }
 }
 
 // ===================================
@@ -63,7 +70,6 @@ a {
 // ===================================
 
 .leading-none { line-height: $leading-none; }
-.leading-tight { line-height: $leading-tight; }
 .leading-normal { line-height: $leading-normal; }
 .leading-loose { line-height: $leading-loose; }
 
@@ -82,3 +88,9 @@ a {
 .tt-none { text-transform: $transform-none; }
 .tt-upper { text-transform: $transform-upper; }
 .tt-lower { text-transform: $transform-lower; }
+
+@include mobile {
+  p {
+    padding-right: 0;
+  }
+}

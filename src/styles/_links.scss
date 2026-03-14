@@ -36,18 +36,20 @@
 
   // Variant: Alt (compact, base font, no extended hit area)
   &--alt {
-    padding: $space-xs 0;
     font-size: $text-base;
+    padding: $space-xs 0;
     background-color: 0;
+    border: 0;
 
     &:hover {
-      background-color: $color-primary;
-      color: $color-secondary;
+      background-color: $color-secondary;
+      color: $color-primary;
     }
   }
 
   // Modifier: Inverse (swap colors for dark backgrounds - works with any variant)
   &--inverse {
+    background-color: $color-primary;
     color: $color-secondary;
 
     &:hover {
@@ -109,29 +111,25 @@
 }
 
 // ===================================
-// VERTICAL NAVIGATION
+// SIDE NAVIGATION
 // ===================================
 
-.vertical-nav {
+.side-nav {
+  z-index: 1000;
   position: fixed;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
 
+  max-width: 16rem;
+
   display: flex;
   flex-direction: column;
-  align-items: end;
-
-  padding-right: $space-md;
 
   // Full-width hit areas for links
   .link {
     width: 100%;
     justify-content: flex-end;
-  }
-
-  // Hide on mobile
-  @include mobile {
-    display: none;
+    text-align: right;
   }
 }

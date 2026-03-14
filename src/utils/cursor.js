@@ -4,18 +4,18 @@
  */
 
 import { gsap } from 'gsap'
+import { BP_MOBILE } from '../constants/breakpoints.js'
 
 const HIT_AREA = 8
 const SNAP_DURATION = 0.2
 const FOLLOW_DURATION = 0.05
+const CURSOR_BRACKET = 12
 
 let element = null
 let target = null
 let mouse = { x: 0, y: 0 }
-let rafId = null
 let enabled = false
 let interactives = []  // Cached interactive elements
-let interactiveRects = []  // Cached bounding rects
 
 /**
  * Cache interactive elements and their positions
@@ -23,17 +23,10 @@ let interactiveRects = []  // Cached bounding rects
  */
 function cacheInteractives() {
   interactives = Array.from(document.querySelectorAll('a, button, .link, [role="button"]'))
-  interactiveRects = interactives.map(el => {
-    const rect = el.getBoundingClientRect()
-    return {
-      centerX: rect.left + rect.width / 2,
-      centerY: rect.top + rect.height / 2
-    }
-  })
 }
 
 function shouldEnable() {
-  return window.matchMedia('(min-width: 768px)').matches &&
+  return window.matchMedia(`(min-width: ${BP_MOBILE}px)`).matches &&
          window.matchMedia('(pointer: fine)').matches
 }
 
@@ -72,8 +65,8 @@ function returnToFollow() {
   gsap.to(element, {
     x: mouse.x,
     y: mouse.y,
-    '--bracket-x': '12px',
-    '--bracket-y': '12px',
+    '--bracket-x': `${CURSOR_BRACKET}px`,
+    '--bracket-y': `${CURSOR_BRACKET}px`,
     duration: FOLLOW_DURATION,
     ease: 'none',
     overwrite: true
@@ -110,16 +103,6 @@ function onHover(e) {
   }
 }
 
-function update() {
-  if (!enabled) return
-
-  if (target) {
-    snapToTarget(target)
-  }
-
-  rafId = requestAnimationFrame(update)
-}
-
 function attachListeners() {
   document.addEventListener('mousemove', onMouseMove, { passive: true })
   document.addEventListener('mouseenter', onHover, true)
@@ -145,20 +128,14 @@ export function init() {
   gsap.set(element, {
     x: mouse.x,
     y: mouse.y,
-    '--bracket-x': '12px',
-    '--bracket-y': '12px'
+    '--bracket-x': `${CURSOR_BRACKET}px`,
+    '--bracket-y': `${CURSOR_BRACKET}px`
   })
 
   attachListeners()
-  update()
 }
 
 export function destroy() {
-  if (rafId) {
-    cancelAnimationFrame(rafId)
-    rafId = null
-  }
-
   detachListeners()
 
   if (element) {

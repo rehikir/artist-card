@@ -4,10 +4,12 @@
 // MOBILE RESPONSIVE
 // ===================================
 
+
+
 @include mobile {
   // Reduce base font size
   html {
-    font-size: 12px;
+    font-size: $text-xs;
   }
 
   // Body becomes full-width
@@ -18,6 +20,7 @@
 
   // Card becomes full-width and transparent
   .card {
+    padding-top: $space-2xl;
     border-radius: 0;
     background: transparent;
     gap: $space-2xl;
@@ -46,5 +49,32 @@
   .status {
     flex-direction: column;
     font-size: $text-h3;
+  }
+
+  .side-nav {
+    background-color: $color-text;
+    position: fixed;
+    flex-direction: row;
+
+    max-width: 100%;
+    overflow: scroll;
+    transform: none;
+    top: 0;
+    left: 0;
+
+    gap: $space-sm;
+
+    .link {
+      width: auto;
+      justify-content: center;
+      text-wrap: nowrap;
+      padding: $space-sm $space-md;
+    }
+  }
+}
+
+@include high-res {
+  html {
+    font-size: $text-lg * 1.5;
   }
 }

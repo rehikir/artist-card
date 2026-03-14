@@ -19,17 +19,12 @@
   display: flex;
   align-items: center;
   line-height: 1;
-
-  span {
-    background-color: $color-surface;
-  }
 }
 
 .branding-page-title {
   display: inline-block;
-  padding-right: $space-2xl;
+  padding-right: $space-4xl;
   word-break: break-word;
-  background-color: $color-surface;
 }
 
 // Hover effect - invert colors

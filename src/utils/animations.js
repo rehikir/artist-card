@@ -3,6 +3,8 @@
  * Simple fade transitions for page changes
  */
 
+import { BP_MOBILE } from '../constants/breakpoints.js'
+
 // Check for reduced motion preference
 export const prefersReducedMotion = () => {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -10,7 +12,7 @@ export const prefersReducedMotion = () => {
 
 // Check if desktop (matches cursor criteria)
 export const isDesktop = () => {
-  return window.matchMedia('(min-width: 768px)').matches &&
+  return window.matchMedia(`(min-width: ${BP_MOBILE}px)`).matches &&
          window.matchMedia('(pointer: fine)').matches
 }
 

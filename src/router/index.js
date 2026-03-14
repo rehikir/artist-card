@@ -198,6 +198,12 @@ export const initRouter = (callback) => {
     // Skip if route hasn't changed
     if (from === to) return
 
+    // Redirect unknown routes to homepage
+    if (to === ROUTES.NOT_FOUND) {
+      window.location.replace('#/index.html')
+      return
+    }
+
     // Execute guards
     const allowed = await executeGuards(to, from)
     if (!allowed) {

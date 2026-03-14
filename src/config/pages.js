@@ -10,7 +10,7 @@ import { HomeContent } from '../components/Body/HomeContent.js'
 import { RulesContent } from '../components/Body/RulesContent.js'
 import { PricesContent } from '../components/Body/PricesContent.js'
 import { FaqContent } from '../components/Body/FaqContent.js'
-import { NotFoundContent } from '../components/Body/NotFoundContent.js'
+import { TestPageContent } from '../components/Body/TestPageContent.js'
 
 export const pagesConfig = {
   home: {
@@ -79,10 +79,21 @@ export const pagesConfig = {
       ]
     }
   },
-  notFound: {
-    path: '404.html',
-    titleSuffix: 'Page Not Found',
-    component: NotFoundContent
+  testpage: {
+    path: 'testpage.html',
+    titleSuffix: 'Test Page',
+    component: TestPageContent,
+    content: {
+      
+    }
+  },
+  testpage123: {
+    path: 'testpage123.html',
+    titleSuffix: 'Page with an Extremely Long Title to Test Layout',
+    component: TestPageContent,
+    content: {
+      
+    }
   }
 }
 
@@ -94,7 +105,7 @@ export const pagesConfig = {
  */
 export const getNavLinksFromConfig = (currentPage) => {
   // Pages to exclude from auto-generated navigation
-  const excludePages = ['notFound']
+  const excludePages = []
 
   return Object.keys(pagesConfig)
     .filter((key) => !excludePages.includes(key))

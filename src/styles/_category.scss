@@ -22,7 +22,6 @@
 .category-caption {
   display: flex;
   align-items: center;
-  text-transform: $transform-none;
 
   img {
     width: $space-xl;
@@ -31,4 +30,6 @@
 
 .category-caption-label {
   font-size: $text-base;
+  text-transform: $transform-none;
+  letter-spacing: $tracking-normal;
 }

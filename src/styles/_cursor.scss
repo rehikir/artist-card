@@ -22,13 +22,13 @@
       pointer-events: none;
       z-index: $z-cursor;
       transform: translate(-50%, -50%);
-      opacity: 0.6;
+      opacity: $opacity-60;
       mix-blend-mode: difference;
-      @include transition(opacity, $ease-default, $duration-fast);
+      @include transition(opacity, $ease-snappy, $duration-fast);
 
       // CSS custom properties for dynamic sizing
-      --bracket-x: 12px;
-      --bracket-y: 12px;
+      --bracket-x: #{$cursor-bracket};
+      --bracket-y: #{$cursor-bracket};
 
       &::before,
       &::after {

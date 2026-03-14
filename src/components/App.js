@@ -4,14 +4,14 @@ import { Header } from './Header/Header.js'
 import { Body } from './Body/Body.js'
 import { Footer } from './Footer/Footer.js'
 import { Cursor } from './Cursor/Cursor.js'
-import { VerticalNav } from './Links/VerticalNav.js'
-import { ConstructionBanner } from './Banner/ConstructionBanner.js'
+import { SideNav } from './Links/SideNav.js'
+import { wipBanner } from './Banner/wipBanner.js'
 
 export function createApp({ page = 'home', isInner = false } = {}) {
   return `
     ${Cursor()}
-    ${ConstructionBanner()}
-    ${VerticalNav({ currentPage: page })}
+    ${wipBanner()}
+    ${SideNav({ currentPage: page })}
     <div class="${getCardClass(isInner)}">
       ${Header({
         title: getPageSuffix(page),

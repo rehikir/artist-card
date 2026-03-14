@@ -33,11 +33,11 @@ export function RulesContent() {
       caption: 'Drawing Preferences',
       children: `
         <div class="rules-list">
-          <h3 class="rules-subtitle">Do -</h3>
+          <h3 class="rules-subtitle">DO -</h3>
           <div class="rules-items">
             ${renderRulesItems(doList)}
           </div>
-          <h3 class="rules-subtitle">Don't -</h3>
+          <h3 class="rules-subtitle">DON'T -</h3>
           <div class="rules-items">
             ${renderRulesItems(dontList)}
           </div>

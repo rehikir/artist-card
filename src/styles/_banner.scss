@@ -4,14 +4,15 @@
 // CONSTRUCTION BANNER
 // ===================================
 
-.construction-banner {
+.wip-banner {
+  opacity: $opacity-muted;
+
   position: fixed;
   bottom: 0;
   right: 0;
 
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
 
   padding: $space-xs;
   gap: $space-xs;
@@ -24,10 +25,5 @@
     font-size: $text-sm;
     color: $color-warning;
     margin: 0;
-  }
-
-  // Hide on mobile
-  @include mobile {
-    display: none;
   }
 }

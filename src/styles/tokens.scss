@@ -42,6 +42,7 @@ $space-4: 1.5rem;    // 24px
 $space-5: 2rem;      // 32px
 $space-6: 3rem;      // 48px
 $space-7: 4rem;      // 64px
+$space-8: 6rem;      // 96px
 
 // Semantic aliases
 $space-xs: $space-1;
@@ -51,6 +52,7 @@ $space-lg: $space-4;
 $space-xl: $space-5;
 $space-2xl: $space-6;
 $space-3xl: $space-7;
+$space-4xl: $space-8;
 
 
 // ===================================
@@ -78,14 +80,13 @@ $weight-body: $weight-light;
 
 // Line heights
 $leading-none: 1;
-$leading-tight: 1.25;
-$leading-normal: 1.5;
+$leading-normal: 1.6;
 $leading-loose: 2;
 
 // Letter spacing
 $tracking-tight: -10%;     // -10% tight tracking
-$tracking-normal: 0;
-$tracking-wide: 0.05em;
+$tracking-normal: -5%;     // -5% normal tracking
+$tracking-wide: 5%;
 
 // Text transform
 $transform-none: none;
@@ -112,6 +113,7 @@ $card-min-height: 100vh;
 // Cursor
 $cursor-size: 24px;
 $cursor-hit: 8px;
+$cursor-bracket: 12px;
 
 
 // ===================================
@@ -159,7 +161,7 @@ $opacity-muted: $opacity-60;
 // ===================================
 
 // Durations
-$duration-fast: 150ms;
+$duration-fast: 100ms;
 $duration-base: 200ms;
 $duration-slow: 500ms;
 
@@ -181,7 +183,9 @@ $transition-bouncy: $duration-base $ease-bouncy;
 // ===================================
 // BREAKPOINTS
 // ===================================
+// Note: Keep in sync with constants/breakpoints.js (BP_MOBILE)
 
+$bp-high-res: 140rem; // 2240px
 $bp-mobile: 72rem; // 1152px
 
 
@@ -284,11 +288,14 @@ $z-cursor: 9999;
   }
 }
 
-/**
- * Desktop breakpoint (up)
- */
 @mixin desktop {
   @media (min-width: $bp-mobile) {
+    @content;
+  }
+}
+
+@mixin high-res {
+  @media (min-width: $bp-high-res) {
     @content;
   }
 }

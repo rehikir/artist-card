@@ -1,11 +1,11 @@
 import { getNavLinksFromConfig } from '../../config/pages.js'
 import { Link } from '../../layout/Link/Link.js'
 
-export function VerticalNav({ currentPage = 'home' } = {}) {
+export function SideNav({ currentPage = 'home' } = {}) {
   const links = getNavLinksFromConfig(currentPage)
 
   return `
-    <nav class="vertical-nav" aria-label="Page navigation">
+    <nav class="side-nav" aria-label="Page navigation">
       ${links.map(link => {
         const isActive = link.route === currentPage
 
