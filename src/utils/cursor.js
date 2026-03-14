@@ -8,7 +8,7 @@ import { BP_MOBILE } from '../constants/breakpoints.js'
 
 const HIT_AREA = 8
 const SNAP_DURATION = 0.2
-const FOLLOW_DURATION = 0.05
+const FOLLOW_DURATION = 0.02
 const CURSOR_BRACKET = 12
 
 let element = null
@@ -56,7 +56,7 @@ function snapToTarget(t) {
     '--bracket-x': `${halfW}px`,
     '--bracket-y': `${halfH}px`,
     duration: SNAP_DURATION,
-    ease: 'power1.out',
+    ease: 'power2.out',
     overwrite: true
   })
 }

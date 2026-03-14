@@ -18,7 +18,10 @@ export function ContactSection() {
         variant: 'cta'
       })}
       ${Link({
+        href: 'https://forms.google.com/your-form-id',
         text: 'Contact me',
+        target: '_blank',
+        rel: 'noopener',
         variant: 'alt',
       })}
     `

@@ -37,13 +37,12 @@
   // Variant: Alt (compact, base font, no extended hit area)
   &--alt {
     font-size: $text-base;
-    padding: $space-xs 0;
+    padding: 0 $space-md $space-xs $space-xs;
     background-color: 0;
-    border: 0;
 
     &:hover {
-      background-color: $color-secondary;
-      color: $color-primary;
+      background-color: $color-primary;
+      color: $color-secondary;
     }
   }
 
@@ -131,5 +130,8 @@
     width: 100%;
     justify-content: flex-end;
     text-align: right;
+
+    padding: $space-xs 0;
+    border: 0;
   }
 }
