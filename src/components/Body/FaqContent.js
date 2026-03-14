@@ -20,7 +20,7 @@ export function FaqContent() {
   const items = pageData.items || []
   const faqHtml = items.length > 0
     ? items.map(renderFaqItem).join('')
-    : '<p class="faq-placeholder">FAQ coming soon.</p>'
+    : '<h3>FAQ PAGE IS UNDER COSTRUCTION.</h3>'
 
   return `
     ${Category({

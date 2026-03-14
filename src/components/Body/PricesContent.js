@@ -29,7 +29,7 @@ export function PricesContent() {
   const columns = pageData.columns || []
   const columnsHtml = columns.length > 0
     ? columns.map(renderPriceColumn).join('')
-    : '<p class="price-placeholder">Prices coming soon.</p>'
+    : '<h3>PRICES PAGE IS UNDER COSTRUCTION.</h3>'
 
   return `
     ${Category({

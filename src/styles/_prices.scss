@@ -65,6 +65,7 @@
 .terms-list {
   display: flex;
   flex-direction: column;
+  gap: $space-sm;
 }
 
 .term-entry {
@@ -83,7 +84,6 @@
 
 .term-note-text {
   font-size: $text-base;
-  opacity: $opacity-60;
   padding-left: $space-md;
 
   text-transform: none;

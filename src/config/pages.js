@@ -78,16 +78,8 @@ export const pagesConfig = {
     }
   },
   testpage: {
-    path: 'testpage.html',
-    titleSuffix: 'Test Page',
-    component: TestPageContent,
-    content: {
-      
-    }
-  },
-  testpage123: {
-    path: 'testpage123.html',
-    titleSuffix: 'Page with an Extremely Long Title to Test Layout',
+    path: 'about.html',
+    titleSuffix: 'About',
     component: TestPageContent,
     content: {
       

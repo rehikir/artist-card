@@ -37,6 +37,8 @@ export function RulesContent() {
           <div class="rules-items">
             ${renderRulesItems(doList)}
           </div>
+        </div>
+        <div class="rules-list">
           <h3 class="rules-subtitle">DON'T -</h3>
           <div class="rules-items">
             ${renderRulesItems(dontList)}
