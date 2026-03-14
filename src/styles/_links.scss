@@ -121,7 +121,7 @@
   top: 50%;
   transform: translateY(-50%);
 
-  max-width: 16rem;
+  max-width: calc(100vw / 8);
 
   display: flex;
   flex-direction: column;

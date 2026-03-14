@@ -21,7 +21,8 @@
 
   z-index: $z-modal;
 
-  p {
+  span {
+    text-transform: $transform-none;
     font-size: $text-sm;
     color: $color-warning;
     margin: 0;

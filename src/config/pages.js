@@ -37,13 +37,11 @@ export const pagesConfig = {
       drawingPreferences: {
         do: [
           'Scalie / Furry',
-          'Abuse',
           'Nudity',
-          'Soft Gore',
           'Soft Fetish',
           'OC Design',
           'Experimental or Abstract Piece',
-          'Fanart'
+          'Fanart',
         ],
         dont: [
           'Illegal Stuff',
