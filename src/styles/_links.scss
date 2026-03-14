@@ -77,15 +77,19 @@
 
 // Hit area modifiers based on layout context
 .category-section--inline .link::before {
-  inset: -$space-md 0; // Vertical only
+  inset: -$space-md (-$space-sm); // Vertical only
 }
 
 .category-section:not(.category-section--inline) .link::before {
-  inset: 0 (-$space-md); // Horizontal only
+  inset: -$space-sm (-$space-md); // Horizontal only
 }
 
 .link.link--alt::before {
   inset: -$space-sm -$space-sm;
+}
+
+.side-nav .link::before {
+  inset: 0;
 }
 
 // Icon container
