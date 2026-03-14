@@ -24,6 +24,8 @@
     border-radius: 0;
     background: transparent;
     gap: $space-2xl;
+
+    overflow: visible;
   }
 
   // Remove fixed height on mobile
@@ -57,7 +59,8 @@
     flex-direction: row;
 
     max-width: 100%;
-    overflow: scroll;
+    overflow-x: auto;
+    overflow-y: visible;
     transform: none;
     top: 0;
     left: 0;
