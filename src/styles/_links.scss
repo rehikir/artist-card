@@ -85,7 +85,7 @@
 }
 
 .link.link--alt::before {
-  inset: -$space-sm -$space-sm;
+  inset: -$space-sm (-$space-sm);
 }
 
 .side-nav .link::before {
